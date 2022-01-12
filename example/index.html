@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SDK</title>
+  </head>
+  <body>
+    <div id="createItem">
+      <h4>Create Item</h4>
+      <input
+        type="text"
+        id="txtCreateItemURI"
+        required
+        placeholder="Enter TokenURI"
+      />
+
+      <button id="btnCreateItem">Create Item</button>
+    </div>
+
+    <div id="sellItem">
+      <h4>Sell Item</h4>
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numSellItemTokenId"
+        placeholder="Enter TokenId"
+        required
+      />
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numSellItemPrice"
+        placeholder="Enter Price"
+        required
+      />
+
+      <button id="btnSellItem">Sell Item</button>
+    </div>
+
+    <div id="auctionItem">
+      <h4>Auction Item</h4>
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numAuctionItemTokenId"
+        placeholder="Enter TokenId"
+        required
+      />
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numAuctionItemPrice"
+        placeholder="Enter Auction Price"
+        required
+      />
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numAuctionItemTime"
+        placeholder="Enter Auction Time"
+        required
+      />
+
+      <button id="btnAuctionItem">Auction Item</button>
+    </div>
+
+    <div id="buyItem">
+      <h4>Buy Item</h4>
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numBuyItem"
+        placeholder="Enter SaleId"
+        required
+      />
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numBuyItemAmmount"
+        placeholder="Enter Ammount"
+        required
+      />
+
+      <button id="btnBuyItem">Buy Item</button>
+    </div>
+
+    <div id="Bid">
+      <h4>Bid</h4>
+      <input
+        type="number"
+        id="numBidItemSaleId"
+        required
+        placeholder="Enter SaleId"
+      />
+      <input
+        type="number"
+        id="numBidItemPrice"
+        required
+        placeholder="Enter Bid Price"
+      />
+
+      <button id="btnBidItem">Bid</button>
+    </div>
+
+    <div id="executeBid">
+      <h4>Execute Bid</h4>
+      <input
+        type="number"
+        id="numExecuteSaleId"
+        required
+        placeholder="Enter SaleId"
+      />
+      <input
+        type="number"
+        id="numExecuteBidId"
+        required
+        placeholder="Enter BidId"
+      />
+
+      <button id="btnExecuteBidItem">Execute Bid</button>
+    </div>
+
+    <div id="withdrawBid">
+      <h4>Withdraw Bid Money</h4>
+      <input
+        type="number"
+        id="numWithdrawSaleId"
+        required
+        placeholder="Enter SaleId"
+      />
+      <input
+        type="number"
+        id="numWithdrawBidId"
+        required
+        placeholder="Enter BidId"
+      />
+
+      <button id="btnWithdrawBidItem">Withdraw Bid</button>
+    </div>
+
+    <div id="withdrawBid">
+      <h4>Cancel Item Sale</h4>
+      <input
+        type="number"
+        id="numCancelSaleId"
+        required
+        placeholder="Enter SaleId"
+      />
+
+      <button id="btnCancelItemSale">Cancel Sale</button>
+    </div>
+
+    <div id="Collection">
+      <h4>Create Collection</h4>
+      <input
+        type="text"
+        id="collectionName"
+        required
+        placeholder="Enter Collection Name"
+      />
+      <input
+        type="text"
+        id="collectionSymbol"
+        required
+        placeholder="Enter collection Symbol"
+      />
+      <input
+        type="text"
+        id="collectionDescription"
+        required
+        placeholder="Enter collection Description"
+      />
+      <input
+        type="number"
+        id="collectionRoyalties"
+        required
+        placeholder="Enter collection Royalties"
+      />
+
+      <button id="btnCreateCollection">Create Collection</button>
+    </div>
+
+    <div id="mintInCollection">
+      <h4>Mint in collection</h4>
+      <input
+        type="text"
+        id="collectionAddress"
+        required
+        placeholder="Enter collection Address"
+      />
+      <input type="text" id="tokenURI" required placeholder="Enter TokenURI" />
+      <input
+        type="number"
+        id="royalties"
+        required
+        placeholder="Enter Royalties"
+      />
+
+      <button id="btnMintInCollection">Mint in collection</button>
+    </div>
+
+    <div id="sellInCollection">
+      <h4>Sell in collection</h4>
+      <input
+        type="text"
+        id="sellCollectionAddress"
+        required
+        placeholder="Enter collection Address"
+      />
+      <input
+        type="number"
+        id="sellTokenId"
+        required
+        placeholder="Enter TokenId"
+      />
+      <input type="number" id="sellPrice" required placeholder="Enter Price" />
+
+      <button id="btnSellInCollection">Sell in collection</button>
+    </div>
+
+    <div id="buyInCollection">
+      <h4>Buy in collection</h4>
+      <input
+        type="number"
+        id="buyTokenId"
+        required
+        placeholder="Enter tokenId"
+      />
+      <input type="number" id="buyPrice" required placeholder="Enter Price" />
+
+      <button id="btnBuyInCollection">Buy in collection</button>
+    </div>
+
+    <div id="sellByBidInCollection">
+      <h4>SellByBid in collection</h4>
+      <input
+        type="text"
+        id="sellByBidCollectionAddress"
+        required
+        placeholder="Enter collection Address"
+      />
+      <input
+        type="number"
+        id="sellByBidTokenId"
+        required
+        placeholder="Enter TokenId"
+      />
+      <input type="number" id="sellByBidPrice" required placeholder="Enter Price" />
+      <input
+        type="number"
+        id="sellByBidBidTime"
+        required
+        placeholder="Enter Bid Time"
+      />
+
+      <button id="btnSellByBidinCollection">SellByBid in collection</button>
+    </div>
+
+    <div id="bidInCollection">
+      <h4>Bid in collection</h4>
+      <input
+        type="number"
+        id="bidCollectionSaleId"
+        required
+        placeholder="Enter SaleId"
+      />
+      <input type="number" id="bidCollectionPrice" required placeholder="Enter Price" />
+
+      <button id="btnBidInCollection">Bid in collection</button>
+    </div>
+
+    <div id="acceptBidInCollection">
+      <h4>Accept Bid in collection</h4>
+      <input
+        type="number"
+        id="acceptBidSaleId"
+        required
+        placeholder="Enter SaleId"
+      />
+      <input
+        type="number"
+        id="acceptBidId"
+        required
+        placeholder="Enter BidId"
+      />
+
+      <button id="btnAcceptBidInCollection">AcceptBid in collection</button>
+    </div>
+
+    <div id="withdrawBidInCollection">
+      <h4>Withdraw Bid in collection</h4>
+      <input
+        type="number"
+        id="withdrawBidSaleId"
+        required
+        placeholder="Enter SaleId"
+      />
+      <input
+        type="number"
+        id="withdrawBidId"
+        required
+        placeholder="Enter BidId"
+      />
+
+      <button id="btnWithdrawBidInCollection">Withdraw Bid in collection</button>
+    </div>
+
+    <div id="cancelSaleInCollection">
+      <h4>Cancel Sale in collection</h4>
+      <input
+        type="number"
+        id="cancelSaleId"
+        required
+        placeholder="Enter SaleId"
+      />
+
+      <button id="btnCancelSaleInCollection">Cancel Sale in collection</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
