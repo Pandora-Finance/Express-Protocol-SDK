@@ -11,11 +11,11 @@ const sellNFT = async (web3, tokenId, price, sellerAddress) => {
   );
 
   await PNDC_instance.methods
-    .approve(process.env.TOKENFACTORY_ADDRESS, tokenId)
+    .approve(UTILS.TOKENFACTORY_ADDRESS(), tokenId)
     .send({ from: sellerAddress });
   console.log("approved");
   let result = await tokenFactoryInstance.methods
-    .sellNFT(process.env.PNDC_address, tokenId, price)
+    .sellNFT(UTILS.PNDC_ADDRESS(), tokenId, price)
     .send({ from: sellerAddress });
 
   console.log(result);
@@ -31,10 +31,10 @@ const sellNFTbyBid = async (web3, tokenId, price, ownerAddress, bidTime) => {
   );
 
   await PNDC_instance.methods
-    .approve(process.env.TOKENFACTORY_ADDRESS, tokenId)
+    .approve(UTILS.TOKENFACTORY_ADDRESS(), tokenId)
     .send({ from: ownerAddress });
   let result = await tokenFactoryInstance.methods
-    .SellNFT_byBid(process.env.PNDC_address, tokenId, price, bidTime)
+    .SellNFT_byBid(UTILS.PNDC_ADDRESS(), tokenId, price, bidTime)
     .send({ from: ownerAddress });
 
   console.log(result);

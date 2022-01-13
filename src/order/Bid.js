@@ -19,7 +19,7 @@ const acceptBid = async (web3, tokenId, bidId, ownerAddress) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
     TokenFactory_ABI,
-    process.env.PNDC_ADDRESS
+    UTILS.PNDC_ADDRESS()
   );
   let result = await tokenFactoryInstance.methods
     .executeBidOrder(tokenId, bidId)
@@ -33,7 +33,7 @@ const withdrawBid = async (web3, tokenId, bidId, bidderAddress) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
     TokenFactory_ABI,
-    process.env.PNDC_ADDRESS
+    UTILS.PNDC_ADDRESS()
   );
 
   let result = await tokenFactoryInstance.methods
