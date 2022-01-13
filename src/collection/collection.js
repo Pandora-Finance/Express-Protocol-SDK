@@ -65,7 +65,7 @@ const sellNFT = async (
   const tokenERC721Instance = await createInstance(web3, collectionAddress);
 
   await tokenERC721Instance.methods
-    .approve(process.env.TOKENFACTORY_ADDRESS, tokenId)
+    .approve(UTILS.TOKENFACTORY_ADDRESS(), tokenId)
     .send({ from: sellerAddress });
 
   const result = await tokenFactoryInstance.methods
@@ -91,7 +91,7 @@ const sellNFTbyBid = async (
   const tokenERC721Instance = await createInstance(web3, collectionAddress);
 
   await tokenERC721Instance.methods
-    .approve(process.env.TOKENFACTORY_ADDRESS, tokenId)
+    .approve(UTILS.TOKENFACTORY_ADDRESS(), tokenId)
     .send({ from: ownerAddress });
   const result = await tokenFactoryInstance.methods
     .SellNFT_byBid(collectionAddress, tokenId, price, bidTime)
