@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.24.0",
+    "form-data": "^4.0.0",
     "parcel": "^2.1.0",
     "web3": "^1.6.1"
   }

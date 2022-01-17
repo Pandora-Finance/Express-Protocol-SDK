@@ -326,6 +326,37 @@
       <button id="btnCancelSaleInCollection">Cancel Sale in collection</button>
     </div>
 
+
+    <div id="uploadNFTPinataCloud">
+      <h4>upload NFT to Pinata Cloud</h4>
+      <input
+        type="file"
+        id="nftImage"
+        required
+        name="myNFT"
+      />
+      <input 
+        type="text"
+        id="pinataApiKey"
+        required
+        placeholder="Enter Pinata API Key"
+        />
+      <input
+        type="text"
+        id="pinataSecretApiKey"
+        required
+        placeholder="Enter Pinata Secret API Key"
+      />
+      <input
+        type="text"
+        id="nftDescription"
+        required
+        placeholder="Enter NFT Description"
+      />
+
+      <button id="btnUploadNFTPinataCloud">Upload NFT</button>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="main.js"></script>
   </body>
