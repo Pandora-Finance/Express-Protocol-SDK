@@ -17,7 +17,7 @@ const deployCollection = async (
   );
 
   let result = await tokenFactoryInstance.methods
-    .deployERC721(name, symbol, description, [[deployerAddress, royalties]])
+    .deployERC721(name, symbol, description, royalties)
     .send({ from: deployerAddress });
 
   console.log(result);
@@ -45,7 +45,7 @@ const mint = async (
   const tokenERC721Instance = await createInstance(web3, collectionAddress);
 
   const result = await tokenERC721Instance.methods
-    .safeMint(minterAddress, tokenURI, [true,[[minterAddress,royalties]]])
+    .safeMint(minterAddress, tokenURI, [true, royalties])
     .send({ from: minterAddress });
 
   console.log(result);

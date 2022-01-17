@@ -51,7 +51,7 @@ mintNft = async () => {
   let pandoraSDK = await createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   await pandoraSDK.nft.mint(web3, accounts[0], itemURI.value, [
-    [accounts[0], 100],
+    [accounts[0], 100]
   ]);
 };
 
@@ -142,7 +142,7 @@ createCollection = async() => {
     collectionName.value,
     collectionSymbol.value,
     collectionDescription.value,
-    collectionRoyalties.value
+    [[accounts[0], collectionRoyalties.value]]
   )
 }
 
@@ -154,7 +154,7 @@ mintInCollection = async () => {
     collectionAddress.value,
     tokenURI.value,
     accounts[0],
-    royalties.value
+    [[accounts[0], collectionRoyalties.value]]
   )
 }
 
