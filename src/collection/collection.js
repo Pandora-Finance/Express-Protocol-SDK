@@ -51,6 +51,7 @@ const mint = async (
     .send({ from: minterAddress });
 
   console.log(result);
+  return result;
 };
 
 const sellNFT = async (
@@ -120,6 +121,7 @@ const cancelSale = async (web3, chainId, ownerAddress, saleId) => {
     .send({ from: ownerAddress });
 
   console.log(result);
+  return result;
 };
 
 const buyNFT = async (web3,chainId, tokenId, buyerAddress, amount) => {
@@ -164,6 +166,7 @@ const acceptBid = async (web3, chainId, tokenId, bidId, ownerAddress) => {
     .send({ from: ownerAddress });
 
   console.log(result);
+  return result;
 };
 
 const withdrawBid = async (web3, chainId, tokenId, bidId, bidderAddress) => {

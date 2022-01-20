@@ -13,6 +13,7 @@ const buyNFT = async (web3, chainId, tokenId, buyerAddress, amount) => {
     .send({ from: buyerAddress, value: amount });
 
   console.log(result);
+  return result;
 };
 
 module.exports = {
