@@ -1,9 +1,10 @@
 const UTILS = require("../common/utils");
 const { TokenFactory_ABI } = require("../../abi/tokenfactory");
 
-const buyNFT = async (web3, tokenId, buyerAddress, amount) => {
+const buyNFT = async (web3, chainId, tokenId, buyerAddress, amount) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
+    chainId,
     TokenFactory_ABI
   );
 
