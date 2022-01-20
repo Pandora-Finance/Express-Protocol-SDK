@@ -5,6 +5,7 @@ const {TokenERC721_ABI} = require("../../abi/tokenerc721");
 
 const deployCollection = async (
   web3,
+  chainId,
   deployerAddress,
   name,
   symbol,
@@ -13,6 +14,7 @@ const deployCollection = async (
 ) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
+    chainId,
     TokenFactory_ABI
   );
 
@@ -53,6 +55,7 @@ const mint = async (
 
 const sellNFT = async (
   web3,
+  chainId,
   collectionAddress,
   tokenId,
   price,
@@ -60,12 +63,13 @@ const sellNFT = async (
 ) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
+    chainId,
     TokenFactory_ABI
   );
   const tokenERC721Instance = await createInstance(web3, collectionAddress);
 
   await tokenERC721Instance.methods
-    .approve(UTILS.TOKENFACTORY_ADDRESS(), tokenId)
+    .approve(UTILS.TOKENFACTORY_ADDRESS(chainId), tokenId)
     .send({ from: sellerAddress });
 
   const result = await tokenFactoryInstance.methods
@@ -78,6 +82,7 @@ const sellNFT = async (
 
 const sellNFTbyBid = async (
   web3,
+  chainId,
   collectionAddress,
   tokenId,
   price,
@@ -86,12 +91,13 @@ const sellNFTbyBid = async (
 ) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
+    chainId,
     TokenFactory_ABI
   );
   const tokenERC721Instance = await createInstance(web3, collectionAddress);
 
   await tokenERC721Instance.methods
-    .approve(UTILS.TOKENFACTORY_ADDRESS(), tokenId)
+    .approve(UTILS.TOKENFACTORY_ADDRESS(chainId), tokenId)
     .send({ from: ownerAddress });
   const result = await tokenFactoryInstance.methods
     .SellNFT_byBid(collectionAddress, tokenId, price, bidTime)
@@ -101,9 +107,10 @@ const sellNFTbyBid = async (
   return result;
 };
 
-const cancelSale = async (web3, ownerAddress, saleId) => {
+const cancelSale = async (web3, chainId, ownerAddress, saleId) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
+    chainId,
     TokenFactory_ABI
   );
   // const tokenERC721Instance = await createInstance(web3, collectionAddress);
@@ -115,9 +122,10 @@ const cancelSale = async (web3, ownerAddress, saleId) => {
   console.log(result);
 };
 
-const buyNFT = async (web3, tokenId, buyerAddress, amount) => {
+const buyNFT = async (web3,chainId, tokenId, buyerAddress, amount) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
+    chainId,
     TokenFactory_ABI
   );
   // const tokenERC721Instance = await createInstance(web3, collectionAddress);
@@ -130,9 +138,10 @@ const buyNFT = async (web3, tokenId, buyerAddress, amount) => {
   return result;
 };
 
-const bid = async (web3, tokenId, bidderAddress, price) => {
+const bid = async (web3, chainId, tokenId, bidderAddress, price) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
+    chainId,
     TokenFactory_ABI
   );
 
@@ -144,9 +153,10 @@ const bid = async (web3, tokenId, bidderAddress, price) => {
   return result;
 };
 
-const acceptBid = async (web3, tokenId, bidId, ownerAddress) => {
+const acceptBid = async (web3, chainId, tokenId, bidId, ownerAddress) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
+    chainId,
     TokenFactory_ABI
   );
   const result = await tokenFactoryInstance.methods
@@ -156,9 +166,10 @@ const acceptBid = async (web3, tokenId, bidId, ownerAddress) => {
   console.log(result);
 };
 
-const withdrawBid = async (web3, tokenId, bidId, bidderAddress) => {
+const withdrawBid = async (web3, chainId, tokenId, bidId, bidderAddress) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
+    chainId,
     TokenFactory_ABI
   );
 

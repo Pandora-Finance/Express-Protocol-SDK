@@ -1,9 +1,10 @@
 const UTILS = require("../common/utils");
 const { TokenFactory_ABI } = require("../../abi/tokenfactory");
 
-const bid = async (web3, tokenId, bidderAddress, price) => {
+const bid = async (web3, chainId, tokenId, bidderAddress, price) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
+    chainId,
     TokenFactory_ABI
   );
 
@@ -15,11 +16,11 @@ const bid = async (web3, tokenId, bidderAddress, price) => {
   return result;
 };
 
-const acceptBid = async (web3, tokenId, bidId, ownerAddress) => {
+const acceptBid = async (web3, chainId, tokenId, bidId, ownerAddress) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
-    TokenFactory_ABI,
-    UTILS.PNDC_ADDRESS()
+    chainId,
+    TokenFactory_ABI
   );
   let result = await tokenFactoryInstance.methods
     .executeBidOrder(tokenId, bidId)
@@ -29,11 +30,11 @@ const acceptBid = async (web3, tokenId, bidId, ownerAddress) => {
   return result;
 };
 
-const withdrawBid = async (web3, tokenId, bidId, bidderAddress) => {
+const withdrawBid = async (web3, chainId, tokenId, bidId, bidderAddress) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
-    TokenFactory_ABI,
-    UTILS.PNDC_ADDRESS()
+    chainId,
+    TokenFactory_ABI
   );
 
   let result = await tokenFactoryInstance.methods

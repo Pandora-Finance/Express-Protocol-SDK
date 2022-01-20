@@ -1,8 +1,9 @@
 const UTILS = require("../common/utils");
 const { PNDC_ABI } = require("../../abi/pndc");
 
-const mint = async (web3, minterAddress, tokenURI, royalties) => {
-  const PNDC_instance = await UTILS.PNDC_instance(web3, PNDC_ABI);
+const mint = async (web3, chainId, minterAddress, tokenURI, royalties) => {
+
+  const PNDC_instance = await UTILS.PNDC_instance(web3, chainId, PNDC_ABI);
 
   let result = await PNDC_instance.methods
     .safeMint(minterAddress, tokenURI, royalties)
