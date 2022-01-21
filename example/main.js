@@ -8,7 +8,7 @@ const Web3 = require("web3");
 
 require("dotenv").config();
 
-// export function createPandoraSDK(){
+
 const createPandoraSDK = () => {
   return {
     order: {
