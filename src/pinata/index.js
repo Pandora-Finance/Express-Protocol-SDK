@@ -28,6 +28,7 @@ const pinFileToIPFS = (file, description, pinataApiKey, pinataSecretApiKey) => {
         })
         .then(function (response) {
             console.log('Uploaded', response);
+            return response;
         })
         .catch(function (error) {
             console.log('Error', error);
