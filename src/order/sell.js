@@ -44,7 +44,7 @@ const sellNFTbyBid = async (web3, chainId, tokenId, price, ownerAddress, bidTime
   return result;
 };
 
-const cancelSale = async (web3, ownerAddress, saleId) => {
+const cancelSale = async (web3, chainId, ownerAddress, saleId) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
     chainId,
