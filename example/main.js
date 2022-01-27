@@ -3,7 +3,7 @@ const Buy = require("../src/order/buy");
 const Sell = require("../src/order/sell");
 const Bid = require("../src/order/Bid");
 const Collection = require('../src/collection/collection');
-const {pinFileToIPFS} = require("../src/pinata/index");
+const Pinata = require("../src/pinata/index");
 const Web3 = require("web3");
 
 require("dotenv").config();
@@ -36,7 +36,8 @@ const createPandoraSDK = () => {
       withdrawBid: Collection.withdrawBid,
     },
     pinata:{
-      upload: pinFileToIPFS
+      upload: Pinata.pinFileToIPFS,
+      pinJSON: Pinata.pinJSONToIPFS
     }
   };
 };
@@ -293,6 +294,15 @@ uploadNFTPinataCloud = async () => {
   )
 }
 
+pinJSONPinataCloud = async () => {
+  let pandoraSDK = await createPandoraSDK();
+  await pandoraSDK.pinata.pinJSON(
+    pinataAPIKeyJSON.value,
+    pinataSecretApiKeyJSON.value,
+    pinataJSONData.value
+  )
+}
+
 const itemURI = document.getElementById("txtCreateItemURI");
 
 const createItemButton = document.getElementById("btnCreateItem");
@@ -409,5 +419,12 @@ const nftDescription = document.getElementById('nftDescription');
 
 const btnUploadNFTPinataCloud = document.getElementById('btnUploadNFTPinataCloud');
 btnUploadNFTPinataCloud.onclick = uploadNFTPinataCloud;
+
+const pinataAPIKeyJSON = document.getElementById('pinataApiKeyJSON');
+const pinataSecretApiKeyJSON = document.getElementById('pinataSecretApiKeyJSON');
+const pinataJSONData = document.getElementById('pinataJSONData');
+
+const btnUploadNFTJson = document.getElementById('btnUploadNFTJson');
+btnUploadNFTJson.onclick = pinJSONPinataCloud;
 
 init();

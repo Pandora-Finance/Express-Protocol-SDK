@@ -357,6 +357,31 @@
       <button id="btnUploadNFTPinataCloud">Upload NFT</button>
     </div>
 
+    <div id="uploadNFTPinataCloud">
+      <h4>upload JSON to Pinata Cloud</h4>
+      <input 
+        type="text"
+        id="pinataApiKeyJSON"
+        required
+        placeholder="Enter Pinata API Key"
+        />
+      <input
+        type="text"
+        id="pinataSecretApiKeyJSON"
+        required
+        placeholder="Enter Pinata Secret API Key"
+      />
+      <input
+        type="text"
+        id="pinataJSONData"
+        value="{'name': 'kk','image': 'ipfs://your_asset_cid' }"
+        required
+        placeholder="Enter JSON"
+      />
+
+      <button id="btnUploadNFTJson">Upload NFT</button>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="main.js"></script>
   </body>
