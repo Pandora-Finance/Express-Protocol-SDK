@@ -3,7 +3,7 @@ const Buy = require("./src/order/buy");
 const Sell = require("./src/order/sell");
 const Bid = require("./src/order/Bid");
 const Collection = require("./src/collection/collection");
-const {pinFileToIPFS} = require("./src/pinata/index");
+const Pinata = require("./src/pinata/index");
 
 
 export function createPandoraSDK(){
@@ -33,7 +33,8 @@ export function createPandoraSDK(){
       withdrawBid: Collection.withdrawBid,
     },
     pinata: {
-      upload: pinFileToIPFS
+      upload: Pinata.pinFileToIPFS,
+      pinJSON: Pinata.pinJSONToIPFS
     }
   };
 };
