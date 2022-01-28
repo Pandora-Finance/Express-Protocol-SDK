@@ -54,10 +54,11 @@ The **src** directory contains the main source code of the SDK.
 
 ## Usage
 
-Import *PandoraSDK* function from *pan-sdk*.
+Import *PandoraSDK* function from *pan-sdk* and initialize sdk.
 
 ```jsx
-import { PandoraSDK } from "pan-sdk";
+const sdk = require("pan-sdk");
+const PandoraSDK = sdk.createPandoraSDK();
 ```
 
 **Mint:** NFTs can be mint using the *mint* function.
@@ -209,4 +210,27 @@ PandoraSDK.collection.withdrawBid(web3, chainId, saleId, bidId, buyerAddress);
 
 ```jsx
 PandoraSDK.collection.cancelSale(web3, chainId, sellerAddress, saleId);
+```
+
+## Pinata Upload Functions.
+
+**Upload NFTs to Pinata Cloud service :**
+
+```jsx
+PandoraSDK.pinata.upload(
+    nftImage,
+    nftDescription,
+    pinataApiKey,
+    pinataSecretApiKey
+  );
+```
+
+**Upload JSON data to Pinata Cloud:**
+
+```jsx
+PandoraSDK.pinata.pinJSON(
+    pinataAPIKeyJSON,
+    pinataSecretApiKeyJSON,
+    pinataJSONData
+  );
 ```
