@@ -54,6 +54,12 @@ The **src** directory contains the main source code of the SDK.
 
 ## Usage
 
+Import *PandoraSDK* function from *pan-sdk*.
+
+```jsx
+import { PandoraSDK } from "pan-sdk";
+```
+
 **Mint:** NFTs can be mint using the *mint* function.
 
 ```jsx
@@ -63,7 +69,7 @@ PandoraSDK.nft.mint(web3, chainId, minterAddress, tokenURI, royalties);
 **Sell:** NFTs can be put on sale using the *sellNFT* function.
 
 ```jsx
-PandoraSDK.nft.sellNFT(web3, chainId, tokenId, tokenPrice, ownerAddress);
+PandoraSDK.order.sellNFT(web3, chainId, tokenId, tokenPrice, ownerAddress);
 ```
 
 **Buy:** NFTs can be bought using the *buyNFT* function.
@@ -93,11 +99,114 @@ PandoraSDK.order.bid(web3, chainId, saleId, buyerAddress, bidPrice);
 **Bid Execution:** Bids on NFTs can be executed using *acceptBid* function.
 
 ```jsx
-PandoraSDK.order.acceptBid(web3, chainId, SaleId, BidId, sellerAddress);
+PandoraSDK.order.acceptBid(web3, chainId, saleId, bidId, sellerAddress);
 ```
 
 **Bid Withdraw:** Other bids except executed bid can be withdrawn using *withdrawBid* function.
 
 ```jsx
 PandoraSDK.order.withdrawBid(web3, chainId, saleId, bidId, buyerAddress);
+```
+
+## Collection Functions.
+
+**Collection:** New collection can be deployed using *createCollection* function.
+
+```jsx
+PandoraSDK.collection.createCollection(
+    web3,
+    chainId,
+    ownerAddress,
+    collectionName,
+    collectionSymbol,
+    collectionDescription,
+    collectionRoyalties
+  );
+```
+
+**Mint in Collection:** NFTs can be minted inside collection using *mint* function.
+
+```jsx
+PandoraSDK.collection.mint(
+    web3,
+    collectionAddress,
+    tokenURI,
+    minterAddress,
+    royalties
+  );
+```
+
+**Sell in Collection:** NFTs can be put on direct sale inside collection using *sellNFT* function.
+
+```jsx
+PandoraSDK.collection.sellNFT(
+    web3,
+    chainId,
+    sellCollectionAddress,
+    sellTokenId,
+    sellPrice,
+    ownerAddress
+  );
+```
+
+**Buy in Collection:** NFTs on sale can be bought in a collection using *buyNFT* function.
+
+```jsx
+PandoraSDK.collection.buyNFT(
+    web3,
+    chainId,
+    buyTokenId,
+    buyerAddress,
+    buyPrice
+  );
+```
+
+**Auction in Collection :** NFTs can be put on auction sale in a collection using *sellNFTByBid* function.
+
+```jsx
+PandoraSDK.collection.sellNFTByBid(
+    web3,
+    chainId,
+    sellByBidCollectionAddress,
+    sellByBidTokenId,
+    sellByBidPrice,
+    ownerAddress,
+    sellByBidTime
+  );
+```
+
+**Bid Collection NFTs:** NFTs on auction sale can be bid by other users in a collection using *bid* function.
+
+```jsx
+PandoraSDK.collection.bid(
+    web3,
+    chainId,
+    bidCollectionSaleId,
+    bidderAddress,
+    bidCollectionPrice
+  );
+```
+
+**Bid Execution on Collection NFTs:** Bids on NFTs can be executed in a collection using *acceptBid* function.
+
+```jsx
+PandoraSDK.collection.acceptBid(
+    web3,
+    chainId,
+    acceptBidSaleId,
+    acceptBidId,
+    sellerAddress
+  );
+```
+
+**Bid Withdraw in Collection:** Other bids except executed bid can be withdrawn in a collection using *withdrawBid* function.
+
+```jsx
+PandoraSDK.collection.withdrawBid(web3, chainId, saleId, bidId, buyerAddress);
+```
+
+**Cancel Sale in Collection NFTs:** NFTs on sale in a collection can be removed from sale using the *cancelSale* function.
+
+```jsx
+PandoraSDK.collection.cancelSale(web3, chainId, sellerAddress, saleId);
 ```
