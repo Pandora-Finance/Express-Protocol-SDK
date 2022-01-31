@@ -8,7 +8,7 @@ const Web3 = require("web3");
 
 require("dotenv").config();
 
-// export function createPandoraSDK(){
+
 const createPandoraSDK = () => {
   return {
     order: {
@@ -53,7 +53,7 @@ init = async () => {
 };
 
 mintNft = async () => {
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
@@ -63,7 +63,7 @@ mintNft = async () => {
 };
 
 sellNft = async () => {
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
@@ -77,7 +77,7 @@ sellNft = async () => {
 };
 
 auctionNft = async () => {
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
@@ -95,7 +95,7 @@ buyNft = async () => {
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   await pandoraSDK.order.buyNFT(
     web3,
     chainId,
@@ -109,7 +109,7 @@ bid = async () => {
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   await pandoraSDK.order.bid(
     web3,
     chainId,
@@ -123,7 +123,7 @@ executeBid = async () => {
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   await pandoraSDK.order.acceptBid(
     web3,
     chainId,
@@ -137,7 +137,7 @@ withdrawBidMoney = async () => {
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   await pandoraSDK.order.withdrawBid(
     web3,
     chainId,
@@ -151,12 +151,12 @@ cancelSale = async () => {
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   await pandoraSDK.order.cancelSale(web3, chainId, accounts[0], CancelSaleId.value);
 };
 
 createCollection = async() => {
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
@@ -172,7 +172,7 @@ createCollection = async() => {
 }
 
 mintInCollection = async () => {
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
@@ -186,7 +186,7 @@ mintInCollection = async () => {
 }
 
 sellInCollection = async () => {
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
@@ -201,7 +201,7 @@ sellInCollection = async () => {
 }
 
 buyInCollection = async () => {
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
@@ -215,7 +215,7 @@ buyInCollection = async () => {
 }
 
 sellNFTByBidInCollection = async () => {
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
@@ -230,7 +230,7 @@ sellNFTByBidInCollection = async () => {
   )
 }
 bidInCollection = async () => {
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
@@ -244,7 +244,7 @@ bidInCollection = async () => {
 }
 
 acceptBidInCollection = async () => {
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
@@ -258,7 +258,7 @@ acceptBidInCollection = async () => {
 }
 
 withdrawBidInCollection = async () => {
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
@@ -272,7 +272,7 @@ withdrawBidInCollection = async () => {
 }
 
 cancelSaleInCollection = async () => {
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId)
@@ -285,7 +285,7 @@ cancelSaleInCollection = async () => {
 }
 
 uploadNFTPinataCloud = async () => {
-  let pandoraSDK = await createPandoraSDK();
+  let pandoraSDK = createPandoraSDK();
   await pandoraSDK.pinata.upload(
     nftImage.files[0],
     nftDescription.value,
