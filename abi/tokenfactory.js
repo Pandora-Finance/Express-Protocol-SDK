@@ -667,20 +667,25 @@ const TokenFactory_ABI = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "initialize",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
         internalType: "address",
         name: "_address",
         type: "address",
       },
+      {
+        internalType: "address",
+        name: "_feeAddress",
+        type: "address",
+      },
     ],
+    name: "initialize",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "initialize",
     outputs: [],
     stateMutability: "nonpayable",

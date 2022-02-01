@@ -1,4 +1,4 @@
-const { mint } = require("./src/nft/mint");
+const { mint, batchMint, burn } = require("./src/nft/mint");
 const Buy = require("./src/order/buy");
 const Sell = require("./src/order/sell");
 const Bid = require("./src/order/Bid");
@@ -19,11 +19,15 @@ export function createPandoraSDK(){
     },
     nft: {
       mint: mint,
+      batchMint: batchMint,
+      burn: burn
     },
     collection: {
       createCollection: Collection.deployCollection,
       createInstance: Collection.createInstance,
       mint: Collection.mint,
+      batchMint: Collection.batchMint,
+      burn: Collection.burn,
       sellNFT: Collection.sellNFT,
       sellNFTByBid: Collection.sellNFTbyBid,
       cancelSale: Collection.cancelSale,
