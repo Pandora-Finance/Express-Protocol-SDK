@@ -1,7 +1,7 @@
 const UTILS = require("../common/utils");
-const {PNDC_ABI} = require('../../abi/pndc');
-const {TokenFactory_ABI} = require('../../abi/tokenfactory');
-const {TokenERC721_ABI} = require("../../abi/tokenerc721");
+const { PNDC_ABI } = require("../../abi/pndc");
+const { TokenFactory_ABI } = require("../../abi/tokenfactory");
+const { TokenERC721_ABI } = require("../../abi/tokenerc721");
 
 const deployCollection = async (
   web3,
@@ -48,6 +48,35 @@ const mint = async (
 
   const result = await tokenERC721Instance.methods
     .safeMint(minterAddress, tokenURI, [true, royalties])
+    .send({ from: minterAddress });
+
+  console.log(result);
+  return result;
+};
+
+const batchMint = async (
+  web3,
+  collectionAddress,
+  minterAddress,
+  totalNFT,
+  uriArray,
+  royalties
+) => {
+  const tokenERC721Instance = await createInstance(web3, collectionAddress);
+
+  const result = await tokenERC721Instance.methods
+    .batchMint(totalNFT, uriArray, [true, royalties])
+    .send({ from: minterAddress });
+
+  console.log(result);
+  return result;
+};
+
+const burn = async (web3, collectionAddress, minterAddress, tokenId) => {
+  const tokenERC721Instance = await createInstance(web3, collectionAddress);
+
+  let result = await tokenERC721Instance.methods
+    .burn(tokenId)
     .send({ from: minterAddress });
 
   console.log(result);
@@ -124,7 +153,7 @@ const cancelSale = async (web3, chainId, ownerAddress, saleId) => {
   return result;
 };
 
-const buyNFT = async (web3,chainId, tokenId, buyerAddress, amount) => {
+const buyNFT = async (web3, chainId, tokenId, buyerAddress, amount) => {
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(
     web3,
     chainId,
@@ -188,6 +217,8 @@ module.exports = {
   deployCollection,
   createInstance,
   mint,
+  batchMint,
+  burn,
   sellNFT,
   sellNFTbyBid,
   cancelSale,

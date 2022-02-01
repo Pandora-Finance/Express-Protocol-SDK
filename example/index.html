@@ -19,6 +19,44 @@
       <button id="btnCreateItem">Create Item</button>
     </div>
 
+    <div id="createItemInBatch">
+      <h4>Create Item in Batch(3 in this example)</h4>
+      <input
+        type="text"
+        id="txtCreateItemURI1"
+        required
+        placeholder="Enter TokenURI"
+      />
+      <input
+        type="text"
+        id="txtCreateItemURI2"
+        required
+        placeholder="Enter TokenURI"
+      />
+      <input
+        type="text"
+        id="txtCreateItemURI3"
+        required
+        placeholder="Enter TokenURI"
+      />
+
+      <button id="btnCreateItemInBatch">Create Items</button>
+    </div>
+
+    <div id="burnItem">
+      <h4>Burn Item</h4>
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numBurnTokenId"
+        required
+        placeholder="Enter TokenId"
+      />
+
+      <button id="btnBurnItem">Burn Item</button>
+    </div>
+
     <div id="sellItem">
       <h4>Sell Item</h4>
       <input
@@ -208,6 +246,56 @@
       <button id="btnMintInCollection">Mint in collection</button>
     </div>
 
+    <div id="batchMintInCollection">
+      <h4>Batch Mint in collection(3 in this example)</h4>
+      <input
+        type="text"
+        id="batchCollectionAddress"
+        required
+        placeholder="Enter collection Address"
+      />
+      <input
+        type="text"
+        id="txtCreateItemCollectionURI1"
+        required
+        placeholder="Enter TokenURI"
+      />
+      <input
+        type="text"
+        id="txtCreateItemCollectionURI2"
+        required
+        placeholder="Enter TokenURI"
+      />
+      <input
+        type="text"
+        id="txtCreateItemCollectionURI3"
+        required
+        placeholder="Enter TokenURI"
+      />
+
+      <button id="btnBatchMintInCollection">BatchMint in collection</button>
+    </div>
+
+    <div id="burnItemInCollection">
+      <h4>Burn Item In Collection</h4>
+      <input
+        type="text"
+        id="burnCollectionAddress"
+        required
+        placeholder="Enter collection Address"
+      />
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numColBurnTokenId"
+        required
+        placeholder="Enter TokenId"
+      />
+
+      <button id="btnColBurnItem">Burn Item</button>
+    </div>
+
     <div id="sellInCollection">
       <h4>Sell in collection</h4>
       <input
@@ -254,7 +342,12 @@
         required
         placeholder="Enter TokenId"
       />
-      <input type="number" id="sellByBidPrice" required placeholder="Enter Price" />
+      <input
+        type="number"
+        id="sellByBidPrice"
+        required
+        placeholder="Enter Price"
+      />
       <input
         type="number"
         id="sellByBidBidTime"
@@ -273,7 +366,12 @@
         required
         placeholder="Enter SaleId"
       />
-      <input type="number" id="bidCollectionPrice" required placeholder="Enter Price" />
+      <input
+        type="number"
+        id="bidCollectionPrice"
+        required
+        placeholder="Enter Price"
+      />
 
       <button id="btnBidInCollection">Bid in collection</button>
     </div>
@@ -311,7 +409,9 @@
         placeholder="Enter BidId"
       />
 
-      <button id="btnWithdrawBidInCollection">Withdraw Bid in collection</button>
+      <button id="btnWithdrawBidInCollection">
+        Withdraw Bid in collection
+      </button>
     </div>
 
     <div id="cancelSaleInCollection">
@@ -326,21 +426,15 @@
       <button id="btnCancelSaleInCollection">Cancel Sale in collection</button>
     </div>
 
-
     <div id="uploadNFTPinataCloud">
       <h4>upload NFT to Pinata Cloud</h4>
+      <input type="file" id="nftImage" required name="myNFT" />
       <input
-        type="file"
-        id="nftImage"
-        required
-        name="myNFT"
-      />
-      <input 
         type="text"
         id="pinataApiKey"
         required
         placeholder="Enter Pinata API Key"
-        />
+      />
       <input
         type="text"
         id="pinataSecretApiKey"
@@ -359,12 +453,12 @@
 
     <div id="uploadNFTPinataCloud">
       <h4>upload JSON to Pinata Cloud</h4>
-      <input 
+      <input
         type="text"
         id="pinataApiKeyJSON"
         required
         placeholder="Enter Pinata API Key"
-        />
+      />
       <input
         type="text"
         id="pinataSecretApiKeyJSON"

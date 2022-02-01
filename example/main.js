@@ -1,13 +1,12 @@
-const { mint } = require("../src/nft/mint");
+const { mint, batchMint, burn } = require("../src/nft/mint");
 const Buy = require("../src/order/buy");
 const Sell = require("../src/order/sell");
 const Bid = require("../src/order/Bid");
-const Collection = require('../src/collection/collection');
+const Collection = require("../src/collection/collection");
 const Pinata = require("../src/pinata/index");
 const Web3 = require("web3");
 
 require("dotenv").config();
-
 
 const createPandoraSDK = () => {
   return {
@@ -22,11 +21,15 @@ const createPandoraSDK = () => {
     },
     nft: {
       mint: mint,
+      batchMint: batchMint,
+      burn: burn,
     },
     collection: {
       createCollection: Collection.deployCollection,
       createInstance: Collection.createInstance,
       mint: Collection.mint,
+      batchMint: Collection.batchMint,
+      burn: Collection.burn,
       sellNFT: Collection.sellNFT,
       sellNFTByBid: Collection.sellNFTbyBid,
       cancelSale: Collection.cancelSale,
@@ -35,10 +38,10 @@ const createPandoraSDK = () => {
       bid: Collection.bid,
       withdrawBid: Collection.withdrawBid,
     },
-    pinata:{
+    pinata: {
       upload: Pinata.pinFileToIPFS,
-      pinJSON: Pinata.pinJSONToIPFS
-    }
+      pinJSON: Pinata.pinJSONToIPFS,
+    },
   };
 };
 
@@ -56,17 +59,40 @@ mintNft = async () => {
   let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   await pandoraSDK.nft.mint(web3, chainId, accounts[0], itemURI.value, [
-    [accounts[0], 100]
+    [accounts[0], 100],
   ]);
+};
+
+batchMintNft = async () => {
+  let pandoraSDK = createPandoraSDK();
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  await pandoraSDK.nft.batchMint(
+    web3,
+    chainId,
+    accounts[0],
+    3,
+    [itemURI1.value, itemURI2.value, itemURI3.value],
+    [[[accounts[0], 100]], [[accounts[0], 10]], [[accounts[0], 200]]]
+  );
+};
+
+burnNft = async () => {
+  let pandoraSDK = createPandoraSDK();
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  await pandoraSDK.nft.burn(web3, chainId, accounts[0], itemburnTokenId.value);
 };
 
 sellNft = async () => {
   let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   await pandoraSDK.order.sellNFT(
     web3,
     chainId,
@@ -80,7 +106,7 @@ auctionNft = async () => {
   let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   await pandoraSDK.order.sellNFTByBid(
     web3,
     chainId,
@@ -94,7 +120,7 @@ auctionNft = async () => {
 buyNft = async () => {
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   let pandoraSDK = createPandoraSDK();
   await pandoraSDK.order.buyNFT(
     web3,
@@ -108,7 +134,7 @@ buyNft = async () => {
 bid = async () => {
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   let pandoraSDK = createPandoraSDK();
   await pandoraSDK.order.bid(
     web3,
@@ -122,7 +148,7 @@ bid = async () => {
 executeBid = async () => {
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   let pandoraSDK = createPandoraSDK();
   await pandoraSDK.order.acceptBid(
     web3,
@@ -136,7 +162,7 @@ executeBid = async () => {
 withdrawBidMoney = async () => {
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   let pandoraSDK = createPandoraSDK();
   await pandoraSDK.order.withdrawBid(
     web3,
@@ -150,16 +176,21 @@ withdrawBidMoney = async () => {
 cancelSale = async () => {
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   let pandoraSDK = createPandoraSDK();
-  await pandoraSDK.order.cancelSale(web3, chainId, accounts[0], CancelSaleId.value);
+  await pandoraSDK.order.cancelSale(
+    web3,
+    chainId,
+    accounts[0],
+    CancelSaleId.value
+  );
 };
 
-createCollection = async() => {
+createCollection = async () => {
   let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   await pandoraSDK.collection.createCollection(
     web3,
     chainId,
@@ -168,28 +199,56 @@ createCollection = async() => {
     collectionSymbol.value,
     collectionDescription.value,
     [[accounts[0], collectionRoyalties.value]]
-  )
-}
+  );
+};
 
 mintInCollection = async () => {
   let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   await pandoraSDK.collection.mint(
     web3,
     collectionAddress.value,
     tokenURI.value,
     accounts[0],
     [[accounts[0], collectionRoyalties.value]]
-  )
-}
+  );
+};
+
+batchMintInCollection = async () => {
+  let pandoraSDK = createPandoraSDK();
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  await pandoraSDK.collection.batchMint(
+    web3,
+    batchCollectionAddress.value,
+    accounts[0],
+    3,
+    [itemColURI1, itemColURI2, itemColURI3],
+    [[accounts[0], 100]]
+  );
+};
+
+burnInCollection = async () => {
+  let pandoraSDK = createPandoraSDK();
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  await pandoraSDK.collection.burn(
+    web3,
+    burnCollectionAddress.value,
+    accounts[0],
+    itemColBurnTokenId.value
+  );
+};
 
 sellInCollection = async () => {
   let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   await pandoraSDK.collection.sellNFT(
     web3,
     chainId,
@@ -197,28 +256,28 @@ sellInCollection = async () => {
     sellTokenId.value,
     sellPrice.value,
     accounts[0]
-  )
-}
+  );
+};
 
 buyInCollection = async () => {
   let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   await pandoraSDK.collection.buyNFT(
     web3,
     chainId,
     buyTokenId.value,
     accounts[0],
     buyPrice.value
-  )
-}
+  );
+};
 
 sellNFTByBidInCollection = async () => {
   let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   await pandoraSDK.collection.sellNFTByBid(
     web3,
     chainId,
@@ -227,13 +286,13 @@ sellNFTByBidInCollection = async () => {
     sellByBidPrice.value,
     accounts[0],
     sellByBidBidTime.value
-  )
-}
+  );
+};
 bidInCollection = async () => {
   let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   await pandoraSDK.collection.bid(
     web3,
     chainId,
@@ -241,48 +300,48 @@ bidInCollection = async () => {
     accounts[0],
     bidCollectionPrice.value
   );
-}
+};
 
 acceptBidInCollection = async () => {
   let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   await pandoraSDK.collection.acceptBid(
     web3,
     chainId,
     acceptBidSaleId.value,
     acceptBidId.value,
     accounts[0]
-  )
-}
+  );
+};
 
 withdrawBidInCollection = async () => {
   let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   await pandoraSDK.collection.withdrawBid(
     web3,
     chainId,
     withdrawBidSaleId.value,
     withdrawBidId.value,
     accounts[0]
-  )
-}
+  );
+};
 
 cancelSaleInCollection = async () => {
   let pandoraSDK = createPandoraSDK();
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
-  console.log(chainId)
+  console.log(chainId);
   await pandoraSDK.collection.cancelSale(
     web3,
     chainId,
     accounts[0],
     cancelSaleId.value
-  )
-}
+  );
+};
 
 uploadNFTPinataCloud = async () => {
   let pandoraSDK = createPandoraSDK();
@@ -291,8 +350,8 @@ uploadNFTPinataCloud = async () => {
     nftDescription.value,
     pinataApiKey.value,
     pinataSecretApiKey.value
-  )
-}
+  );
+};
 
 pinJSONPinataCloud = async () => {
   let pandoraSDK = await createPandoraSDK();
@@ -300,13 +359,25 @@ pinJSONPinataCloud = async () => {
     pinataAPIKeyJSON.value,
     pinataSecretApiKeyJSON.value,
     pinataJSONData.value
-  )
-}
+  );
+};
 
 const itemURI = document.getElementById("txtCreateItemURI");
 
 const createItemButton = document.getElementById("btnCreateItem");
 createItemButton.onclick = mintNft;
+
+const itemURI1 = document.getElementById("txtCreateItemURI1");
+const itemURI3 = document.getElementById("txtCreateItemURI2");
+const itemURI2 = document.getElementById("txtCreateItemURI3");
+
+const createItemsButton = document.getElementById("btnCreateItemInBatch");
+createItemsButton.onclick = batchMintNft;
+
+const itemburnTokenId = document.getElementById("numBurnTokenId");
+
+const burnItemButton = document.getElementById("btnBurnItem");
+burnItemButton.onclick = burnNft;
 
 const sellItemTokenId = document.getElementById("numSellItemTokenId");
 const sellItemPrice = document.getElementById("numSellItemPrice");
@@ -351,80 +422,110 @@ const CancelSaleId = document.getElementById("numCancelSaleId");
 const CancelItemSaleButton = document.getElementById("btnCancelItemSale");
 CancelItemSaleButton.onclick = cancelSale;
 
-const collectionName = document.getElementById('collectionName');
-const collectionSymbol = document.getElementById('collectionSymbol');
-const collectionDescription = document.getElementById('collectionDescription');
-const collectionRoyalties = document.getElementById('collectionRoyalties');
+const collectionName = document.getElementById("collectionName");
+const collectionSymbol = document.getElementById("collectionSymbol");
+const collectionDescription = document.getElementById("collectionDescription");
+const collectionRoyalties = document.getElementById("collectionRoyalties");
 
-const CollectionButton = document.getElementById('btnCreateCollection');
+const CollectionButton = document.getElementById("btnCreateCollection");
 CollectionButton.onclick = createCollection;
 
-const collectionAddress = document.getElementById('collectionAddress');
-const tokenURI = document.getElementById('tokenURI');
-const royalties = document.getElementById('royalties');
+const collectionAddress = document.getElementById("collectionAddress");
+const tokenURI = document.getElementById("tokenURI");
+const royalties = document.getElementById("royalties");
 
-const btnMintInCollection = document.getElementById('btnMintInCollection');
+const btnMintInCollection = document.getElementById("btnMintInCollection");
 btnMintInCollection.onclick = mintInCollection;
 
-const sellCollectionAddress = document.getElementById('sellCollectionAddress');
-const sellTokenId = document.getElementById('sellTokenId');
-const sellPrice = document.getElementById('sellPrice');
+const batchCollectionAddress = document.getElementById(
+  "batchCollectionAddress"
+);
+const itemColURI1 = document.getElementById("txtCreateItemCollectionURI1");
+const itemColURI2 = document.getElementById("txtCreateItemCollectionURI2");
+const itemColURI3 = document.getElementById("txtCreateItemCollectionURI3");
 
-const btnSellInCollection = document.getElementById('btnSellInCollection');
+const createItemsColButton = document.getElementById(
+  "btnBatchMintInCollection"
+);
+createItemsColButton.onclick = batchMintInCollection;
+
+const burnCollectionAddress = document.getElementById("burnCollectionAddress");
+const itemColBurnTokenId = document.getElementById("numColBurnTokenId");
+
+const burnColItemButton = document.getElementById("btnColBurnItem");
+burnColItemButton.onclick = burnInCollection;
+
+const sellCollectionAddress = document.getElementById("sellCollectionAddress");
+const sellTokenId = document.getElementById("sellTokenId");
+const sellPrice = document.getElementById("sellPrice");
+
+const btnSellInCollection = document.getElementById("btnSellInCollection");
 btnSellInCollection.onclick = sellInCollection;
 
-const buyTokenId = document.getElementById('buyTokenId');
-const buyPrice = document.getElementById('buyPrice');
+const buyTokenId = document.getElementById("buyTokenId");
+const buyPrice = document.getElementById("buyPrice");
 
-const btnBuyInCollection = document.getElementById('btnBuyInCollection');
+const btnBuyInCollection = document.getElementById("btnBuyInCollection");
 btnBuyInCollection.onclick = buyInCollection;
 
-const sellByBidCollectionAddress = document.getElementById('sellByBidCollectionAddress');
-const sellByBidTokenId = document.getElementById('sellByBidTokenId');
-const sellByBidPrice = document.getElementById('sellByBidPrice');
-const sellByBidBidTime = document.getElementById('sellByBidBidTime');
+const sellByBidCollectionAddress = document.getElementById(
+  "sellByBidCollectionAddress"
+);
+const sellByBidTokenId = document.getElementById("sellByBidTokenId");
+const sellByBidPrice = document.getElementById("sellByBidPrice");
+const sellByBidBidTime = document.getElementById("sellByBidBidTime");
 
-const btnSellByBidInCollection = document.getElementById('btnSellByBidinCollection');
+const btnSellByBidInCollection = document.getElementById(
+  "btnSellByBidinCollection"
+);
 btnSellByBidInCollection.onclick = sellNFTByBidInCollection;
 
-const bidCollectionSaleId = document.getElementById('bidCollectionSaleId');
-const bidCollectionPrice = document.getElementById('bidCollectionPrice');
+const bidCollectionSaleId = document.getElementById("bidCollectionSaleId");
+const bidCollectionPrice = document.getElementById("bidCollectionPrice");
 
-const btnBidInCollection = document.getElementById('btnBidInCollection');
+const btnBidInCollection = document.getElementById("btnBidInCollection");
 btnBidInCollection.onclick = bidInCollection;
 
-const acceptBidSaleId = document.getElementById('acceptBidSaleId');
-const acceptBidId = document.getElementById('acceptBidId');
+const acceptBidSaleId = document.getElementById("acceptBidSaleId");
+const acceptBidId = document.getElementById("acceptBidId");
 
-const btnAcceptBidInCollection = document.getElementById('btnAcceptBidInCollection');
+const btnAcceptBidInCollection = document.getElementById(
+  "btnAcceptBidInCollection"
+);
 btnAcceptBidInCollection.onclick = acceptBidInCollection;
 
-const withdrawBidSaleId = document.getElementById('withdrawBidSaleId');
-const withdrawBidId = document.getElementById('withdrawBidId');
+const withdrawBidSaleId = document.getElementById("withdrawBidSaleId");
+const withdrawBidId = document.getElementById("withdrawBidId");
 
-const btnWithdrawBidInCollection = document.getElementById('btnWithdrawBidInCollection');
+const btnWithdrawBidInCollection = document.getElementById(
+  "btnWithdrawBidInCollection"
+);
 btnWithdrawBidInCollection.onclick = withdrawBidInCollection;
 
+const cancelSaleId = document.getElementById("cancelSaleId");
 
-const cancelSaleId = document.getElementById('cancelSaleId');
-
-const btnCancelSaleInCollection = document.getElementById('btnCancelSaleInCollection');
+const btnCancelSaleInCollection = document.getElementById(
+  "btnCancelSaleInCollection"
+);
 btnCancelSaleInCollection.onclick = cancelSaleInCollection;
 
+const nftImage = document.getElementById("nftImage");
+const pinataApiKey = document.getElementById("pinataApiKey");
+const pinataSecretApiKey = document.getElementById("pinataSecretApiKey");
+const nftDescription = document.getElementById("nftDescription");
 
-const nftImage = document.getElementById('nftImage');
-const pinataApiKey = document.getElementById('pinataApiKey');
-const pinataSecretApiKey = document.getElementById('pinataSecretApiKey');
-const nftDescription = document.getElementById('nftDescription');
-
-const btnUploadNFTPinataCloud = document.getElementById('btnUploadNFTPinataCloud');
+const btnUploadNFTPinataCloud = document.getElementById(
+  "btnUploadNFTPinataCloud"
+);
 btnUploadNFTPinataCloud.onclick = uploadNFTPinataCloud;
 
-const pinataAPIKeyJSON = document.getElementById('pinataApiKeyJSON');
-const pinataSecretApiKeyJSON = document.getElementById('pinataSecretApiKeyJSON');
-const pinataJSONData = document.getElementById('pinataJSONData');
+const pinataAPIKeyJSON = document.getElementById("pinataApiKeyJSON");
+const pinataSecretApiKeyJSON = document.getElementById(
+  "pinataSecretApiKeyJSON"
+);
+const pinataJSONData = document.getElementById("pinataJSONData");
 
-const btnUploadNFTJson = document.getElementById('btnUploadNFTJson');
+const btnUploadNFTJson = document.getElementById("btnUploadNFTJson");
 btnUploadNFTJson.onclick = pinJSONPinataCloud;
 
 init();
