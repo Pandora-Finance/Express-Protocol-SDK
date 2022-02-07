@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SDK</title>
+  </head>
+  <body>
+    <div id="createItem1155">
+      <h4>Create Item (ERC1155)</h4>
+      <input
+        type="text"
+        id="txtCreate1155ItemURI"
+        required
+        placeholder="Enter TokenURI"
+      />
+
+      <input
+        type="number"
+        id="txtCreate1155ItemAmount"
+        required
+        placeholder="Enter Amount of Tokens"
+      />
+
+      <button id="btnCreateItem1155">Create Item</button>
+    </div>
+
+    <div id="sellItem1155">
+      <h4>Sell Item</h4>
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numSellItem1155TokenId"
+        placeholder="Enter TokenId"
+        required
+      />
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numSellItem1155Price"
+        placeholder="Enter Price"
+        required
+      />
+      <input
+        type="number"
+        id="numSellItem1155Amount"
+        required
+        placeholder="Enter Amount of Tokens"
+      />
+
+      <button id="btnSellItem1155">Sell Item</button>
+    </div>
+
+    <div id="auctionItem1155">
+      <h4>Auction Item</h4>
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numAuctionItem1155TokenId"
+        placeholder="Enter TokenId"
+        required
+      />
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numAuctionItem1155Price"
+        placeholder="Enter Auction Price"
+        required
+      />
+      <input
+        type="number"
+        id="numAuctionItem1155Amount"
+        required
+        placeholder="Enter Amount of Tokens"
+      />
+
+      <button id="btnAuctionItem1155">Auction Item</button>
+    </div>
+
+    <div id="buyItem1155">
+      <h4>Buy Item</h4>
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numBuyItem1155"
+        placeholder="Enter SaleId"
+        required
+      />
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numBuyItem1155Ammount"
+        placeholder="Enter Ammount"
+        required
+      />
+      <input
+        type="number"
+        id="numBuyItem1155Amount"
+        required
+        placeholder="Enter Amount of Tokens"
+      />
+
+      <button id="btnBuyItem1155">Buy Item</button>
+    </div>
+
+    <div id="Bid1155">
+      <h4>Bid</h4>
+      <input
+        type="number"
+        id="numBidItem1155SaleId"
+        required
+        placeholder="Enter SaleId"
+      />
+      <input
+        type="number"
+        id="numBidItem1155Price"
+        required
+        placeholder="Enter Bid Price"
+      />
+      <input
+        type="number"
+        id="numBidItem1155Amount"
+        required
+        placeholder="Enter Amount of Tokens"
+      />
+
+      <button id="btnBidItem1155">Bid</button>
+    </div>
+
+    <div id="executeBid1155">
+      <h4>Execute Bid</h4>
+      <input
+        type="number"
+        id="numExecute1155SaleId"
+        required
+        placeholder="Enter SaleId"
+      />
+      <input
+        type="number"
+        id="numExecute1155BidId"
+        required
+        placeholder="Enter BidId"
+      />
+
+      <button id="btnExecuteBidItem1155">Execute Bid</button>
+    </div>
+
+    <div id="withdrawBid1155">
+      <h4>Withdraw Bid Money</h4>
+      <input
+        type="number"
+        id="numWithdraw1155SaleId"
+        required
+        placeholder="Enter SaleId"
+      />
+      <input
+        type="number"
+        id="numWithdraw1155BidId"
+        required
+        placeholder="Enter BidId"
+      />
+
+      <button id="btnWithdrawBidItem1155">Withdraw Bid</button>
+    </div>
+
+    <div id="cancelSale1155">
+      <h4>Cancel Item Sale</h4>
+      <input
+        type="number"
+        id="numCancel1155SaleId"
+        required
+        placeholder="Enter SaleId"
+      />
+
+      <button id="btnCancelItem1155Sale">Cancel Sale</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

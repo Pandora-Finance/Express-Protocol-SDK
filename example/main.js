@@ -5,6 +5,7 @@ const Bid = require("../src/order/Bid");
 const Collection = require("../src/collection/collection");
 const Pinata = require("../src/pinata/index");
 const Web3 = require("web3");
+const { bidOrder } = require("../src/utilities/bidorder");
 
 require("dotenv").config();
 
@@ -41,6 +42,9 @@ const createPandoraSDK = () => {
     pinata: {
       upload: Pinata.pinFileToIPFS,
       pinJSON: Pinata.pinJSONToIPFS,
+    },
+    utilities: {
+      bidOrder: bidOrder,
     },
   };
 };
@@ -142,6 +146,19 @@ bid = async () => {
     BidItemSaleId.value,
     accounts[0],
     BidItemPrice.value
+  );
+};
+
+bidOrderBook = async () => {
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  let pandoraSDK = createPandoraSDK();
+  await pandoraSDK.utilities.bidOrder(
+    web3,
+    chainId,
+    BidOrderSaleId.value,
+    accounts[0]
   );
 };
 
@@ -404,6 +421,11 @@ const BidItemPrice = document.getElementById("numBidItemPrice");
 
 const BidItemButton = document.getElementById("btnBidItem");
 BidItemButton.onclick = bid;
+
+const BidOrderSaleId = document.getElementById("numBidOrderSaleId");
+
+const BidOrderButton = document.getElementById("btnBidOrder");
+BidOrderButton.onclick = bidOrderBook;
 
 const ExecuteSaleId = document.getElementById("numExecuteSaleId");
 const ExecuteBidId = document.getElementById("numExecuteBidId");
