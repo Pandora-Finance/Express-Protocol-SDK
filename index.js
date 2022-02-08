@@ -1,44 +1,78 @@
-const { mint, batchMint, burn } = require("./src/nft/mint");
-const Buy = require("./src/order/buy");
-const Sell = require("./src/order/sell");
-const Bid = require("./src/order/Bid");
-const Collection = require("./src/collection/collection");
-const Pinata = require("./src/pinata/index");
+const Mint721 = require("./erc721/src/nft/mint");
+const Buy721 = require("./erc721/src/order/buy");
+const Sell721 = require("./erc721/src/order/sell");
+const Bid721 = require("./erc721/src/order/Bid");
+const Collection721 = require("./erc721/src/collection/collection");
+const Mint1155 = require("./erc1155/src/nft/mint");
+const Buy1155 = require("./erc1155/src/order/buy");
+const Sell1155 = require("./erc1155/src/order/sell");
+const Bid1155 = require("./erc1155/src/order/Bid");
+const Collection1155 = require("./erc1155/src/collection/collection");
+const Pinata = require("./pinata/pinata");
 
-
-export function createPandoraSDK(){
+export function createPandoraSDK() {
   return {
-    order: {
-      sellNFT: Sell.sellNFT,
-      sellNFTByBid: Sell.sellNFTbyBid,
-      cancelSale: Sell.cancelSale,
-      buyNFT: Buy.buyNFT,
-      acceptBid: Bid.acceptBid,
-      bid: Bid.bid,
-      withdrawBid: Bid.withdrawBid,
+    erc721: {
+      order: {
+        sellNFT: Sell721.sellNFT,
+        sellNFTByBid: Sell721.sellNFTbyBid,
+        cancelSale: Sell721.cancelSale,
+        buyNFT: Buy721.buyNFT,
+        acceptBid: Bid721.acceptBid,
+        bid: Bid721.bid,
+        withdrawBid: Bid721.withdrawBid,
+      },
+      nft: {
+        mint: Mint721.mint,
+        batchMint: Mint721.batchMint,
+        burn: Mint721.burn,
+      },
+      collection: {
+        createCollection: Collection721.deployCollection,
+        createInstance: Collection721.createInstance,
+        mint: Collection721.mint,
+        batchMint: Collection721.batchMint,
+        burn: Collection721.burn,
+        sellNFT: Collection721.sellNFT,
+        sellNFTByBid: Collection721.sellNFTbyBid,
+        cancelSale: Collection721.cancelSale,
+        buyNFT: Collection721.buyNFT,
+        acceptBid: Collection721.acceptBid,
+        bid: Collection721.bid,
+        withdrawBid: Collection721.withdrawBid,
+      },
     },
-    nft: {
-      mint: mint,
-      batchMint: batchMint,
-      burn: burn
-    },
-    collection: {
-      createCollection: Collection.deployCollection,
-      createInstance: Collection.createInstance,
-      mint: Collection.mint,
-      batchMint: Collection.batchMint,
-      burn: Collection.burn,
-      sellNFT: Collection.sellNFT,
-      sellNFTByBid: Collection.sellNFTbyBid,
-      cancelSale: Collection.cancelSale,
-      buyNFT: Collection.buyNFT,
-      acceptBid: Collection.acceptBid,
-      bid: Collection.bid,
-      withdrawBid: Collection.withdrawBid,
+    erc1155: {
+      order: {
+        sellNFT: Sell1155.sellNFT,
+        sellNFTByBid: Sell1155.sellNFTbyBid,
+        cancelSale: Sell1155.cancelSale,
+        buyNFT: Buy1155.buyNFT,
+        acceptBid: Bid1155.acceptBid,
+        bid: Bid1155.bid,
+        withdrawBid: Bid1155.withdrawBid,
+      },
+      nft: {
+        mint: Mint1155.mint,
+        burn: Mint1155.burn,
+      },
+      collection: {
+        createCollection: Collection1155.deployCollection,
+        createInstance: Collection1155.createInstance,
+        mint: Collection1155.mint,
+        burn: Collection1155.burn,
+        sellNFT: Collection1155.sellNFT,
+        sellNFTByBid: Collection1155.sellNFTbyBid,
+        cancelSale: Collection1155.cancelSale,
+        buyNFT: Collection1155.buyNFT,
+        acceptBid: Collection1155.acceptBid,
+        bid: Collection1155.bid,
+        withdrawBid: Collection1155.withdrawBid,
+      },
     },
     pinata: {
       upload: Pinata.pinFileToIPFS,
-      pinJSON: Pinata.pinJSONToIPFS
-    }
+      pinJSON: Pinata.pinJSONToIPFS,
+    },
   };
-};
+}
