@@ -64,7 +64,7 @@ const TokenFactory1155_ABI = [
         components: [
           {
             internalType: "uint256",
-            name: "saleId",
+            name: "bidId",
             type: "uint256",
           },
           {
@@ -145,6 +145,11 @@ const TokenFactory1155_ABI = [
     inputs: [
       {
         components: [
+          {
+            internalType: "uint256",
+            name: "saleId",
+            type: "uint256",
+          },
           {
             internalType: "address",
             name: "collectionAddress",
@@ -249,7 +254,7 @@ const TokenFactory1155_ABI = [
     outputs: [
       {
         internalType: "uint256",
-        name: "saleId",
+        name: "bidId",
         type: "uint256",
       },
       {
@@ -337,6 +342,11 @@ const TokenFactory1155_ABI = [
     ],
     name: "_tokenMeta",
     outputs: [
+      {
+        internalType: "uint256",
+        name: "saleId",
+        type: "uint256",
+      },
       {
         internalType: "address",
         name: "collectionAddress",

@@ -1,5 +1,4 @@
 const UTILS = require("../common/utils");
-const { PNDC_ABI } = require("../../abi/pndc");
 const { TokenFactory_ABI } = require("../../abi/tokenfactory");
 const { TokenERC721_ABI } = require("../../abi/tokenerc721");
 

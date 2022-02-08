@@ -3,7 +3,7 @@ const Buy = require("../src/order/buy");
 const Sell = require("../src/order/sell");
 const Bid = require("../src/order/Bid");
 const Collection = require("../src/collection/collection");
-const Pinata = require("../src/pinata/index");
+const Pinata = require("../../pinata/pinata");
 const Web3 = require("web3");
 const { bidOrder } = require("../src/utilities/bidorder");
 

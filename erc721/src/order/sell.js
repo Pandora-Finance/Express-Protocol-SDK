@@ -24,7 +24,14 @@ const sellNFT = async (web3, chainId, tokenId, price, sellerAddress) => {
   return result;
 };
 
-const sellNFTbyBid = async (web3, chainId, tokenId, price, ownerAddress, bidTime) => {
+const sellNFTbyBid = async (
+  web3,
+  chainId,
+  tokenId,
+  price,
+  ownerAddress,
+  bidTime
+) => {
   const PNDC_instance = await UTILS.PNDC_instance(web3, chainId, PNDC_ABI);
 
   const tokenFactoryInstance = await UTILS.TOKENFACTORY_instance(

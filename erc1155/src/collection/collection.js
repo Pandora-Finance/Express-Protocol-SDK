@@ -1,5 +1,4 @@
 const UTILS = require("../common/utils");
-const { PNDC1155_ABI } = require("../../abi/pndc1155");
 const { TokenFactory1155_ABI } = require("../../abi/tokenfactory1155");
 const { TokenERC1155_ABI } = require("../../abi/tokenerc1155");
 
@@ -118,7 +117,7 @@ const sellNFTbyBid = async (
   await tokenERC1155Instance.methods
     .setApprovalForAll(UTILS.TOKENFACTORY1155_ADDRESS(chainId), true)
     .send({ from: ownerAddress });
-  const result = await tokenFactoryInstance.methods
+  const result = await tokenFactory1155Instance.methods
     .SellNFT_byBid(collectionAddress, tokenId, price, tokenAmount)
     .send({ from: ownerAddress });
 
