@@ -176,6 +176,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -195,6 +196,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -219,6 +221,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [],
@@ -232,6 +235,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [],
@@ -245,6 +249,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -264,6 +269,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [],
@@ -300,6 +306,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -382,6 +389,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -401,6 +409,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -425,6 +434,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [],
@@ -438,6 +448,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -594,6 +605,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -613,6 +625,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -632,6 +645,7 @@ const PNDC_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
 ];
 

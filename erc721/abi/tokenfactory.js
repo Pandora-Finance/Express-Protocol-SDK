@@ -22,19 +22,6 @@ const TokenFactory_ABI = [
     anonymous: false,
     inputs: [
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "time",
-        type: "uint256",
-      },
-    ],
-    name: "AuctionStarted",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
         indexed: true,
         internalType: "address",
         name: "beacon",
@@ -119,6 +106,31 @@ const TokenFactory_ABI = [
       },
     ],
     name: "ERC721Deployed",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "seller",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "buyer",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "saleId",
+        type: "uint256",
+      },
+    ],
+    name: "NFTBought",
     type: "event",
   },
   {
@@ -236,6 +248,7 @@ const TokenFactory_ABI = [
     outputs: [],
     stateMutability: "payable",
     type: "function",
+    payable: true,
   },
   {
     inputs: [
@@ -285,6 +298,7 @@ const TokenFactory_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -298,6 +312,7 @@ const TokenFactory_ABI = [
     outputs: [],
     stateMutability: "payable",
     type: "function",
+    payable: true,
   },
   {
     inputs: [
@@ -390,6 +405,7 @@ const TokenFactory_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -416,6 +432,7 @@ const TokenFactory_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -435,6 +452,7 @@ const TokenFactory_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -474,6 +492,7 @@ const TokenFactory_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -539,6 +558,7 @@ const TokenFactory_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -563,6 +583,7 @@ const TokenFactory_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [],
@@ -637,6 +658,7 @@ const TokenFactory_ABI = [
     outputs: [],
     stateMutability: "payable",
     type: "function",
+    payable: true,
   },
   {
     inputs: [

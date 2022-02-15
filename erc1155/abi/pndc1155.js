@@ -196,6 +196,7 @@ const PNDC1155_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -220,6 +221,7 @@ const PNDC1155_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -244,6 +246,7 @@ const PNDC1155_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -263,6 +266,7 @@ const PNDC1155_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -287,6 +291,7 @@ const PNDC1155_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [],
@@ -300,6 +305,7 @@ const PNDC1155_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [],
@@ -336,6 +342,7 @@ const PNDC1155_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -439,6 +446,7 @@ const PNDC1155_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -458,6 +466,7 @@ const PNDC1155_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -490,6 +499,7 @@ const PNDC1155_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
   {
     inputs: [
@@ -500,24 +510,6 @@ const PNDC1155_ABI = [
       },
     ],
     name: "setURI",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "string",
-        name: "_uri",
-        type: "string",
-      },
-      {
-        internalType: "uint256",
-        name: "_tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "setTokenUri",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -626,6 +618,7 @@ const PNDC1155_ABI = [
     ],
     stateMutability: "view",
     type: "function",
+    constant: true,
   },
 ];
 
