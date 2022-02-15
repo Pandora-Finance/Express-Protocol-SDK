@@ -1,6 +1,6 @@
-# Protocol-SDK
+# Express-Protocol-SDK
 
-Pandora Protocol SDK is used to build applications for minting, trading, auctioning NFTs on multiple blockchains.
+Express Protocol SDK is used to build applications for minting, trading, auctioning NFTs on multiple blockchains.
 
 Currently, the following blockchains are supported:
 
@@ -56,23 +56,23 @@ The **erc721** and **erc1155** directory follows a similar directory structure f
 
 ## Usage
 
-Import _PandoraSDK_ function from _pan-sdk_ and initialize sdk.
+Import _ExpressSDK_ function from _pandora-express_ and initialize sdk.
 
 ```jsx
-const sdk = require("pan-sdk");
-const PandoraSDK = sdk.createPandoraSDK();
+const sdk = require("pandora-express");
+const ExpressSDK = sdk.createPandoraExpressSDK();
 ```
 
 **Mint:** NFTs can be mint using the _mint_ function.
 
 ```jsx
-PandoraSDK.erc721.nft.mint(web3, chainId, minterAddress, tokenURI, royalties);
+ExpressSDK.erc721.nft.mint(web3, chainId, minterAddress, tokenURI, royalties);
 ```
 
 **Sell:** NFTs can be put on sale using the _sellNFT_ function.
 
 ```jsx
-PandoraSDK.erc721.order.sellNFT(
+ExpressSDK.erc721.order.sellNFT(
   web3,
   chainId,
   tokenId,
@@ -84,19 +84,19 @@ PandoraSDK.erc721.order.sellNFT(
 **Buy:** NFTs can be bought using the _buyNFT_ function.
 
 ```jsx
-PandoraSDK.erc721.order.buyNFT(web3, chainId, saleId, buyerAddress, price);
+ExpressSDK.erc721.order.buyNFT(web3, chainId, saleId, buyerAddress, price);
 ```
 
 **Cancel Sale:** NFTs on sale can be removed from sale using the _cancelSale_ function.
 
 ```jsx
-PandoraSDK.erc721.order.cancelSale(web3, chainId, sellerAddress, saleId);
+ExpressSDK.erc721.order.cancelSale(web3, chainId, sellerAddress, saleId);
 ```
 
 **Auction:** NFTs can be put on auction sale using _sellNFTByBid_ function.
 
 ```jsx
-PandoraSDK.erc721.order.sellNFTByBid(
+ExpressSDK.erc721.order.sellNFTByBid(
   web3,
   chainId,
   tokenId,
@@ -109,19 +109,19 @@ PandoraSDK.erc721.order.sellNFTByBid(
 **Bid:** NFTs on auction sale can be bid using _bid_ function.
 
 ```jsx
-PandoraSDK.erc721.order.bid(web3, chainId, saleId, buyerAddress, bidPrice);
+ExpressSDK.erc721.order.bid(web3, chainId, saleId, buyerAddress, bidPrice);
 ```
 
 **Bid Execution:** Bids on NFTs can be executed using _acceptBid_ function.
 
 ```jsx
-PandoraSDK.erc721.order.acceptBid(web3, chainId, saleId, bidId, sellerAddress);
+ExpressSDK.erc721.order.acceptBid(web3, chainId, saleId, bidId, sellerAddress);
 ```
 
 **Bid Withdraw:** Other bids except executed bid can be withdrawn using _withdrawBid_ function.
 
 ```jsx
-PandoraSDK.erc721.order.withdrawBid(web3, chainId, saleId, bidId, buyerAddress);
+ExpressSDK.erc721.order.withdrawBid(web3, chainId, saleId, bidId, buyerAddress);
 ```
 
 ## Collection Functions.
@@ -129,7 +129,7 @@ PandoraSDK.erc721.order.withdrawBid(web3, chainId, saleId, bidId, buyerAddress);
 **Collection:** New collection can be deployed using _createCollection_ function.
 
 ```jsx
-PandoraSDK.erc721.collection.createCollection(
+ExpressSDK.erc721.collection.createCollection(
   web3,
   chainId,
   ownerAddress,
@@ -143,7 +143,7 @@ PandoraSDK.erc721.collection.createCollection(
 **Mint in Collection:** NFTs can be minted inside collection using _mint_ function.
 
 ```jsx
-PandoraSDK.erc721.collection.mint(
+ExpressSDK.erc721.collection.mint(
   web3,
   collectionAddress,
   tokenURI,
@@ -155,7 +155,7 @@ PandoraSDK.erc721.collection.mint(
 **Sell in Collection:** NFTs can be put on direct sale inside collection using _sellNFT_ function.
 
 ```jsx
-PandoraSDK.erc721.collection.sellNFT(
+ExpressSDK.erc721.collection.sellNFT(
   web3,
   chainId,
   sellCollectionAddress,
@@ -168,7 +168,7 @@ PandoraSDK.erc721.collection.sellNFT(
 **Buy in Collection:** NFTs on sale can be bought in a collection using _buyNFT_ function.
 
 ```jsx
-PandoraSDK.erc721.collection.buyNFT(
+ExpressSDK.erc721.collection.buyNFT(
   web3,
   chainId,
   buyTokenId,
@@ -180,7 +180,7 @@ PandoraSDK.erc721.collection.buyNFT(
 **Auction in Collection :** NFTs can be put on auction sale in a collection using _sellNFTByBid_ function.
 
 ```jsx
-PandoraSDK.erc721.collection.sellNFTByBid(
+ExpressSDK.erc721.collection.sellNFTByBid(
   web3,
   chainId,
   sellByBidCollectionAddress,
@@ -194,7 +194,7 @@ PandoraSDK.erc721.collection.sellNFTByBid(
 **Bid Collection NFTs:** NFTs on auction sale can be bid by other users in a collection using _bid_ function.
 
 ```jsx
-PandoraSDK.erc721.collection.bid(
+ExpressSDK.erc721.collection.bid(
   web3,
   chainId,
   bidCollectionSaleId,
@@ -206,7 +206,7 @@ PandoraSDK.erc721.collection.bid(
 **Bid Execution on Collection NFTs:** Bids on NFTs can be executed in a collection using _acceptBid_ function.
 
 ```jsx
-PandoraSDK.erc721.collection.acceptBid(
+ExpressSDK.erc721.collection.acceptBid(
   web3,
   chainId,
   acceptBidSaleId,
@@ -218,7 +218,7 @@ PandoraSDK.erc721.collection.acceptBid(
 **Bid Withdraw in Collection:** Other bids except executed bid can be withdrawn in a collection using _withdrawBid_ function.
 
 ```jsx
-PandoraSDK.erc721.collection.withdrawBid(
+ExpressSDK.erc721.collection.withdrawBid(
   web3,
   chainId,
   saleId,
@@ -230,7 +230,7 @@ PandoraSDK.erc721.collection.withdrawBid(
 **Cancel Sale in Collection NFTs:** NFTs on sale in a collection can be removed from sale using the _cancelSale_ function.
 
 ```jsx
-PandoraSDK.erc721.collection.cancelSale(web3, chainId, sellerAddress, saleId);
+ExpressSDK.erc721.collection.cancelSale(web3, chainId, sellerAddress, saleId);
 ```
 
 ## Pinata Upload Functions.
@@ -238,7 +238,7 @@ PandoraSDK.erc721.collection.cancelSale(web3, chainId, sellerAddress, saleId);
 **Upload NFTs to Pinata Cloud service :**
 
 ```jsx
-PandoraSDK.pinata.upload(
+ExpressSDK.pinata.upload(
   nftImage,
   nftDescription,
   pinataApiKey,
@@ -249,7 +249,7 @@ PandoraSDK.pinata.upload(
 **Upload JSON data to Pinata Cloud:**
 
 ```jsx
-PandoraSDK.pinata.pinJSON(
+ExpressSDK.pinata.pinJSON(
   pinataAPIKeyJSON,
   pinataSecretApiKeyJSON,
   pinataJSONData

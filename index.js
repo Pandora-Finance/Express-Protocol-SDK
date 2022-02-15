@@ -10,7 +10,7 @@ const Bid1155 = require("./erc1155/src/order/Bid");
 const Collection1155 = require("./erc1155/src/collection/collection");
 const Pinata = require("./pinata/pinata");
 
-export function createPandoraSDK() {
+export function createPandoraExpressSDK() {
   return {
     erc721: {
       order: {
