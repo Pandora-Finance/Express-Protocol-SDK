@@ -56,11 +56,11 @@ The **erc721** and **erc1155** directory follows a similar directory structure f
 
 ## Usage
 
-Import _ExpressSDK_ function from _pandora-express_ and initialize sdk.
+Import _createPandoraExpressSDK_ function from _pandora-express_ and initialize SDK.
 
 ```jsx
-const sdk = require("pandora-express");
-const ExpressSDK = sdk.createPandoraExpressSDK();
+import {createPandoraExpressSDK} from "pandora-express";
+const ExpressSDK = createPandoraExpressSDK();
 ```
 
 **Mint:** NFTs can be mint using the _mint_ function.
