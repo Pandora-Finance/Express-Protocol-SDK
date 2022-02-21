@@ -1,6 +1,6 @@
 {
-  "name": "pandora-sdk",
-  "version": "1.0.0",
+  "name": "pandora-express",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,6 @@
     "axios": "^0.24.0",
     "form-data": "^4.0.0",
     "parcel": "^2.1.0",
-    "web3": "^1.6.1"
+    "web3": "^1.7.0"
   }
 }
