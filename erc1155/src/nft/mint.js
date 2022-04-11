@@ -31,7 +31,7 @@ const burn = async (web3, chainId, ownerAddress, tokenId, tokenAmount) => {
   );
 
   let result = await PNDC1155_instance.methods
-    .burn(ownerAddress, tokenId, tokenAmount)
+    .burn(tokenId, tokenAmount)
     .send({ from: ownerAddress });
 
   console.log(result);
