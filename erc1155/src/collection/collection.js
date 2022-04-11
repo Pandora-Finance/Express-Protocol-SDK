@@ -63,7 +63,7 @@ const burn = async (
   const tokenERC1155Instance = await createInstance(web3, collectionAddress);
 
   let result = await tokenERC1155Instance.methods
-    .burn(ownerAddress, tokenId, tokenAmount)
+    .burn(tokenId, tokenAmount)
     .send({ from: ownerAddress });
 
   console.log(result);

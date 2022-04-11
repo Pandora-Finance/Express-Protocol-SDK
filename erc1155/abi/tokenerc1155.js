@@ -577,11 +577,7 @@ const TokenERC1155_ABI = [
   },
   {
     inputs: [
-      {
-        internalType: "address",
-        name: "_from",
-        type: "address",
-      },
+     
       {
         internalType: "uint256",
         name: "_id",
