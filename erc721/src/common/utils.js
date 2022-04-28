@@ -12,6 +12,10 @@ const UTILS = {
       PNDC_ADDRESS: "0xA7ac3dB5CA61ebDbf9B9C391fB47f1Adc9B584C0",
       TOKENFACTORY_ADDRESS: "0x1fAb10F343Ca6A59177e063449aC4BdbE4592208",
     },
+    80001: {
+      PNDC_ADDRESS: "0x1185d5C3343833B197e4cA336604960d6cEF99ba",
+      TOKENFACTORY_ADDRESS: "0xb52ef85Dc320371b7E615A2aF9eCeE475Cf49302"
+    }
   },
   accounts: async (web3) => {
     return await web3.eth.getAccounts();

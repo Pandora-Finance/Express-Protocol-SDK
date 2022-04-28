@@ -7,6 +7,7 @@ Currently, the following blockchains are supported:
 - Rinkeby Testnet
 - Ropsten Testnet
 - BSC Testnet
+- Polygon Testnet
 
 ## Installation
 
