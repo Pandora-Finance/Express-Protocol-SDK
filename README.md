@@ -27,9 +27,18 @@ For running the SDK code in a local environment -
 
     npm install -g parcel-bundler
 
-→To initiate a sample application, run
+→To initiate a sample application on
+1. ERC721 part - 
 
-    parcel erc721/example/index.html
+    `cd erc721`
+
+    `parcel example/index.html`
+ 
+2. ERC1155 part - 
+
+    `cd erc1155`
+
+    `parcel example/index.html`
 
 ## Structure
 
