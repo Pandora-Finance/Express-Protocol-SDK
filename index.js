@@ -1,6 +1,7 @@
 const Mint721 = require("./erc721/src/nft/mint");
 const Buy721 = require("./erc721/src/order/buy");
 const Sell721 = require("./erc721/src/order/sell");
+const Transfer721 = require("./erc721/src/order/transfer");
 const Bid721 = require("./erc721/src/order/Bid");
 const Collection721 = require("./erc721/src/collection/collection");
 const Mint1155 = require("./erc1155/src/nft/mint");
@@ -14,6 +15,7 @@ export function createPandoraExpressSDK() {
   return {
     erc721: {
       order: {
+        transferNFT: Transfer721.transferNFT,
         sellNFT: Sell721.sellNFT,
         sellNFTByBid: Sell721.sellNFTbyBid,
         cancelSale: Sell721.cancelSale,

@@ -79,6 +79,26 @@
       <button id="btnSellItem">Sell Item</button>
     </div>
 
+    <div id="sellItem">
+      <h4>Transfer Item</h4>
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numTransferItemTokenId"
+        placeholder="Enter TokenId"
+        required
+      />
+      <input
+        type="text"
+        id="txtTransferItemToAddress"
+        placeholder="Enter receiver's address"
+        required
+      />
+
+      <button id="btnTransferItem">Transfer Item</button>
+    </div>
+
     <div id="auctionItem">
       <h4>Auction Item</h4>
       <input
@@ -489,6 +509,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
