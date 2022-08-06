@@ -1,6 +1,7 @@
 const { mint, batchMint, burn } = require("../src/nft/mint");
 const Buy = require("../src/order/buy");
 const Sell = require("../src/order/sell");
+const Transfer = require("../src/order/transfer");
 const Bid = require("../src/order/Bid");
 const Collection = require("../src/collection/collection");
 const Pinata = require("../../pinata/pinata");
@@ -12,6 +13,7 @@ require("dotenv").config();
 const createPandoraExpressSDK = () => {
   return {
     order: {
+      transferNFT: Transfer.transferNFT,
       sellNFT: Sell.sellNFT,
       sellNFTByBid: Sell.sellNFTbyBid,
       cancelSale: Sell.cancelSale,
@@ -103,6 +105,20 @@ sellNft = async () => {
     sellItemTokenId.value,
     sellItemPrice.value,
     accounts[0]
+  );
+};
+
+transferNft = async () => {
+  let ExpressSDK = createPandoraExpressSDK();
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  await ExpressSDK.order.transferNFT(
+    web3,
+    chainId,
+    accounts[0],
+    transferItemToAddress.value,
+    transferItemTokenId.value
   );
 };
 
@@ -401,6 +417,12 @@ const sellItemPrice = document.getElementById("numSellItemPrice");
 
 const sellItemButton = document.getElementById("btnSellItem");
 sellItemButton.onclick = sellNft;
+
+const transferItemToAddress = document.getElementById("txtTransferItemToAddress");
+const transferItemTokenId = document.getElementById("numTransferItemTokenId");
+
+const transferItemButton = document.getElementById("btnTransferItem");
+transferItemButton.onclick = transferNft;
 
 const auctionItemTokenId = document.getElementById("numAuctionItemTokenId");
 const auctionItemPrice = document.getElementById("numAuctionItemPrice");
