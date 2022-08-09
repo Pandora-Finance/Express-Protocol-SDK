@@ -109,6 +109,24 @@ const sellNFT = async (
   return result;
 };
 
+const transferNFT = async (
+  web3,
+  chainId,
+  collectionAddress,
+  tokenId,
+  fromAddress,
+  toAddress
+) => {
+  const tokenERC721Instance = await createInstance(web3, collectionAddress);
+  
+  let result = await tokenERC721Instance.methods
+    .safeTransferFrom(fromAddress, toAddress, tokenId)
+    .send({ from: fromAddress });
+
+  console.log(result);
+  return result;
+}
+
 const sellNFTbyBid = async (
   web3,
   chainId,
@@ -225,4 +243,5 @@ module.exports = {
   bid,
   acceptBid,
   withdrawBid,
+  transferNFT
 };

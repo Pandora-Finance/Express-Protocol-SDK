@@ -40,6 +40,7 @@ const createPandoraExpressSDK = () => {
       acceptBid: Collection.acceptBid,
       bid: Collection.bid,
       withdrawBid: Collection.withdrawBid,
+      transferNFT: Collection.transferNFT
     },
     pinata: {
       upload: Pinata.pinFileToIPFS,
@@ -292,6 +293,21 @@ sellInCollection = async () => {
   );
 };
 
+transferInCollection = async () => {
+  let ExpressSDK = createPandoraExpressSDK();
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  await ExpressSDK.collection.transferNFT(
+    web3,
+    chainId,
+    transferCollectionAddress.value,
+    transferTokenId.value,
+    accounts[0],
+    transferToAddress.value
+  );
+};
+
 buyInCollection = async () => {
   let ExpressSDK = createPandoraExpressSDK();
   const accounts = await web3.eth.getAccounts();
@@ -505,6 +521,13 @@ const sellPrice = document.getElementById("sellPrice");
 
 const btnSellInCollection = document.getElementById("btnSellInCollection");
 btnSellInCollection.onclick = sellInCollection;
+
+const transferCollectionAddress = document.getElementById("transferCollectionAddress");
+const transferTokenId = document.getElementById("transferTokenIdInCollection");
+const transferToAddress = document.getElementById("transferToAddressInCollection");
+
+const btnTransferInCollection = document.getElementById("btnTransferInCollection");
+btnTransferInCollection.onclick = transferInCollection;
 
 const buyTokenId = document.getElementById("buyTokenId");
 const buyPrice = document.getElementById("buyPrice");

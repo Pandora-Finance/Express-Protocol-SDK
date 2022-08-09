@@ -79,7 +79,7 @@
       <button id="btnSellItem">Sell Item</button>
     </div>
 
-    <div id="sellItem">
+    <div id="transferItem">
       <h4>Transfer Item</h4>
       <input
         type="number"
@@ -345,6 +345,25 @@
       <input type="number" id="sellPrice" required placeholder="Enter Price" />
 
       <button id="btnSellInCollection">Sell in collection</button>
+    </div>
+
+    <div id="transferInCollection">
+      <h4>Transfer in collection</h4>
+      <input
+        type="text"
+        id="transferCollectionAddress"
+        required
+        placeholder="Enter collection Address"
+      />
+      <input
+        type="number"
+        id="transferTokenIdInCollection"
+        required
+        placeholder="Enter TokenId"
+      />
+      <input type="text" id="transferToAddressInCollection" required placeholder="Enter receiver's Address" />
+
+      <button id="btnTransferInCollection">Transfer in collection</button>
     </div>
 
     <div id="buyInCollection">
