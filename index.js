@@ -7,6 +7,7 @@ const Collection721 = require("./erc721/src/collection/collection");
 const Mint1155 = require("./erc1155/src/nft/mint");
 const Buy1155 = require("./erc1155/src/order/buy");
 const Sell1155 = require("./erc1155/src/order/sell");
+const Transfer1155 = require("./erc1155/src/order/transfer");
 const Bid1155 = require("./erc1155/src/order/Bid");
 const Collection1155 = require("./erc1155/src/collection/collection");
 const Pinata = require("./pinata/pinata");
@@ -47,6 +48,7 @@ export function createPandoraExpressSDK() {
     },
     erc1155: {
       order: {
+        transferNFT: Transfer1155.transferNFT,
         sellNFT: Sell1155.sellNFT,
         sellNFTByBid: Sell1155.sellNFTbyBid,
         cancelSale: Sell1155.cancelSale,
@@ -71,6 +73,7 @@ export function createPandoraExpressSDK() {
         acceptBid: Collection1155.acceptBid,
         bid: Collection1155.bid,
         withdrawBid: Collection1155.withdrawBid,
+        transferNFT: Collection1155.transferNFT
       },
     },
     pinata: {

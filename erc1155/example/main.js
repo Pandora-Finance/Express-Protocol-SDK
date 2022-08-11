@@ -2,6 +2,7 @@ const { mint } = require("../src/nft/mint");
 const Buy = require("../src/order/buy");
 const Sell = require("../src/order/sell");
 const Bid = require("../src/order/Bid");
+const Transfer = require("../src/order/transfer");
 const Collection = require("../src/collection/collection");
 
 const createPandoraExpressSDK = () => {
@@ -14,6 +15,7 @@ const createPandoraExpressSDK = () => {
       acceptBid: Bid.acceptBid,
       bid: Bid.bid,
       withdrawBid: Bid.withdrawBid,
+      transferNFT: Transfer.transferNFT
     },
     nft: {
       mint: mint,
@@ -30,6 +32,7 @@ const createPandoraExpressSDK = () => {
       acceptBid: Collection.acceptBid,
       bid: Collection.bid,
       withdrawBid: Collection.withdrawBid,
+      transferNFT: Collection.transferNFT
     },
   };
 };
@@ -71,6 +74,21 @@ sellNft = async () => {
     sellItemPrice.value,
     accounts[0],
     sellItemNumber.value
+  );
+};
+
+transferNft = async () => {
+  let ExpressSDK = createPandoraExpressSDK();
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  await ExpressSDK.order.transferNFT(
+    web3,
+    chainId,
+    accounts[0],
+    transferItemToAddress.value,
+    transferItemTokenId.value,
+    transferItemAmount.value
   );
 };
 
@@ -220,6 +238,22 @@ sellInCollection = async () => {
   );
 };
 
+transferInCollection = async () => {
+  let ExpressSDK = createPandoraExpressSDK();
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  await ExpressSDK.collection.transferNFT(
+    web3,
+    chainId,
+    transferCollectionAddress.value,
+    transferTokenId.value,
+    accounts[0],
+    transferToAddress.value,
+    transferAmount.value
+  );
+};
+
 buyInCollection = async () => {
   let ExpressSDK = createPandoraExpressSDK();
   const accounts = await web3.eth.getAccounts();
@@ -319,6 +353,13 @@ const sellItemNumber = document.getElementById("numSellItem1155Amount");
 const sellItemButton = document.getElementById("btnSellItem1155");
 sellItemButton.onclick = sellNft;
 
+const transferItemToAddress = document.getElementById("txtTransferItem1155ToAddress");
+const transferItemTokenId = document.getElementById("numTransferItem1155TokenId");
+const transferItemAmount = document.getElementById("numTransferItem1155Amount");
+
+const transferItemButton = document.getElementById("btnTransferItem1155");
+transferItemButton.onclick = transferNft;
+
 const auctionItemTokenId = document.getElementById("numAuctionItem1155TokenId");
 const auctionItemPrice = document.getElementById("numAuctionItem1155Price");
 const auctionItemNumber = document.getElementById("numAuctionItem1155Amount");
@@ -392,6 +433,14 @@ const itemSellNumber = document.getElementById("numSellInCol1155Amount");
 
 const btnSellInCollection = document.getElementById("btnSellInCollection1155");
 btnSellInCollection.onclick = sellInCollection;
+
+const transferCollectionAddress = document.getElementById("transfer1155CollectionAddress");
+const transferTokenId = document.getElementById("transfer1155TokenIdInCollection");
+const transferToAddress = document.getElementById("transfer1155ToAddressInCollection");
+const transferAmount = document.getElementById('transfer1155AmountInCollection');
+
+const btnTransferInCollection = document.getElementById("btnTransfer1155InCollection");
+btnTransferInCollection.onclick = transferInCollection;
 
 const buySaleId = document.getElementById("buy1155SaleId");
 const buyPrice = document.getElementById("buy1155Price");
