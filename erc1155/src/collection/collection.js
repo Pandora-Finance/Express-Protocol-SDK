@@ -98,6 +98,25 @@ const sellNFT = async (
   return result;
 };
 
+const transferNFT = async (
+  web3,
+  chainId,
+  collectionAddress,
+  tokenId,
+  fromAddress,
+  toAddress,
+  amount
+) => {
+  const tokenERC1155Instance = await createInstance(web3, collectionAddress);
+
+  let result = await tokenERC1155Instance.methods
+    .safeTransferFrom(fromAddress, toAddress, tokenId, amount, [])
+    .send({ from: fromAddress });
+
+  console.log(result);
+  return result;
+};
+
 const sellNFTbyBid = async (
   web3,
   chainId,
@@ -225,4 +244,5 @@ module.exports = {
   bid,
   acceptBid,
   withdrawBid,
+  transferNFT,
 };

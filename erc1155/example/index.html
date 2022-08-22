@@ -54,6 +54,34 @@
       <button id="btnSellItem1155">Sell Item</button>
     </div>
 
+    <div id="transferItem1155">
+      <h4>Transfer Item</h4>
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numTransferItem1155TokenId"
+        placeholder="Enter TokenId"
+        required
+      />
+      <input
+        type="txt"
+        min="1"
+        step="1"
+        id="txtTransferItem1155ToAddress"
+        placeholder="Enter receiver's address"
+        required
+      />
+      <input
+        type="number"
+        id="numTransferItem1155Amount"
+        required
+        placeholder="Enter Amount of Tokens"
+      />
+
+      <button id="btnTransferItem1155">Transfer Item</button>
+    </div>
+
     <div id="auctionItem1155">
       <h4>Auction Item</h4>
       <input
@@ -292,6 +320,36 @@
       <button id="btnSellInCollection1155">Sell in collection</button>
     </div>
 
+    <div id="transferInCollection1155">
+      <h4>Transfer in collection</h4>
+      <input
+        type="text"
+        id="transfer1155CollectionAddress"
+        required
+        placeholder="Enter collection Address"
+      />
+      <input
+        type="number"
+        id="transfer1155TokenIdInCollection"
+        required
+        placeholder="Enter TokenId"
+      />
+      <input
+        type="text"
+        id="transfer1155ToAddressInCollection"
+        required
+        placeholder="Enter receiver's address"
+      />
+      <input
+        type="number"
+        id="transfer1155AmountInCollection"
+        required
+        placeholder="Enter Amount of Tokens"
+      />
+
+      <button id="btnTransfer1155InCollection">Transfer in collection</button>
+    </div>
+
     <div id="buyInCollection1155">
       <h4>Buy in collection</h4>
       <input
@@ -423,6 +481,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
