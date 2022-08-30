@@ -1,6 +1,8 @@
 const UTILS = require("../common/utils");
 const { TokenFactory_ABI } = require("../../abi/tokenfactory");
 const { TokenERC721_ABI } = require("../../abi/tokenerc721");
+const { royalties2d } = require("../../../utilities/royalities");
+
 
 const deployCollection = async (
   web3,
@@ -17,8 +19,11 @@ const deployCollection = async (
     TokenFactory_ABI
   );
 
+  let royalitiesList = await royalties2d(royalties);
+  console.log(royalitiesList);
+
   let result = await tokenFactoryInstance.methods
-    .deployERC721(name, symbol, description, royalties)
+    .deployERC721(name, symbol, description, royalitiesList)
     .send({ from: deployerAddress });
 
   console.log(result);
@@ -45,8 +50,10 @@ const mint = async (
 ) => {
   const tokenERC721Instance = await createInstance(web3, collectionAddress);
 
+  let royalitiesList = await royalties2d(royalties);
+  console.log(royalitiesList);
   const result = await tokenERC721Instance.methods
-    .safeMint(minterAddress, tokenURI, [true, royalties])
+    .safeMint(minterAddress, tokenURI, [true, royalitiesList])
     .send({ from: minterAddress });
 
   console.log(result);
@@ -63,8 +70,11 @@ const batchMint = async (
 ) => {
   const tokenERC721Instance = await createInstance(web3, collectionAddress);
 
+  let royalitiesList = await royalties2d(royalties);
+  console.log(royalitiesList);
+
   const result = await tokenERC721Instance.methods
-    .batchMint(totalNFT, uriArray, [true, royalties])
+    .batchMint(totalNFT, uriArray, [true, royalitiesList])
     .send({ from: minterAddress });
 
   console.log(result);

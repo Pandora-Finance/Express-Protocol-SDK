@@ -58,7 +58,7 @@ mintNft = async () => {
     accounts[0],
     itemNumber.value,
     itemURI.value,
-    [[accounts[0], 100]]
+    [[accounts[0], 99]]
   );
 };
 

@@ -68,7 +68,7 @@ mintNft = async () => {
   const chainId = await web3.eth.net.getId();
   console.log(chainId);
   await ExpressSDK.nft.mint(web3, chainId, accounts[0], itemURI.value, [
-    [accounts[0], 100],
+    [accounts[0], 10],
   ]);
 };
 
@@ -83,7 +83,7 @@ batchMintNft = async () => {
     accounts[0],
     3,
     [itemURI1.value, itemURI2.value, itemURI3.value],
-    [[[accounts[0], 100]], [[accounts[0], 10]], [[accounts[0], 200]]]
+    [[[accounts[0], 10]], [[accounts[0], 10]], [[accounts[0], 20]]]
   );
 };
 
@@ -261,7 +261,7 @@ batchMintInCollection = async () => {
     accounts[0],
     3,
     [itemColURI1, itemColURI2, itemColURI3],
-    [[accounts[0], 100]]
+    [[accounts[0], 10]]
   );
 };
 

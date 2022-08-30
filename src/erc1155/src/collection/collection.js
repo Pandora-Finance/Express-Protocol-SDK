@@ -1,6 +1,7 @@
 const UTILS = require("../common/utils");
 const { TokenFactory1155_ABI } = require("../../abi/tokenfactory1155");
 const { TokenERC1155_ABI } = require("../../abi/tokenerc1155");
+const { royalties2d } = require("../../../utilities/royalities");
 
 const deployCollection = async (
   web3,
@@ -16,8 +17,11 @@ const deployCollection = async (
     TokenFactory1155_ABI
   );
 
+  let royalitiesList = await royalties2d(royalties);
+  console.log(royalitiesList);
+
   let result = await tokenFactory1155Instance.methods
-    .deployERC1155(uri, description, royalties)
+    .deployERC1155(uri, description, royalitiesList)
     .send({ from: deployerAddress });
 
   console.log(result);
