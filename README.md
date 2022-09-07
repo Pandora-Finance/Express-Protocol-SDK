@@ -4,8 +4,11 @@ Express Protocol SDK is used to build applications for minting, trading, auction
 
 Currently, the following blockchains are supported:
 
-- BSC Mainnet
-- Polygon Mainnet
+Mainnet :-
+- Binance Smart Chain
+- Polygon Matic 
+
+Testnets :-
 - Rinkeby Testnet
 - Ropsten Testnet
 - BSC Testnet

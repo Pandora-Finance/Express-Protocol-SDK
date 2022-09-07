@@ -1,11 +1,14 @@
 const UTILS = require("../common/utils");
 const { PNDC_ABI } = require("../../abi/pndc");
+const { royalties2d, royalties3d } = require("../../../utilities/royalities");
 
 const mint = async (web3, chainId, minterAddress, tokenURI, royalties) => {
   const PNDC_instance = await UTILS.PNDC_instance(web3, chainId, PNDC_ABI);
 
+  let royalitiesList = await royalties2d(royalties);
+  console.log(royalitiesList);
   let result = await PNDC_instance.methods
-    .safeMint(minterAddress, tokenURI, royalties)
+    .safeMint(minterAddress, tokenURI, royalitiesList)
     .send({ from: minterAddress });
 
   console.log(result);
@@ -22,8 +25,11 @@ const batchMint = async (
 ) => {
   const PNDC_instance = await UTILS.PNDC_instance(web3, chainId, PNDC_ABI);
 
+  let royalitiesList = await royalties3d(royalties);
+  console.log(royalitiesList);
+
   let result = await PNDC_instance.methods
-    .batchMint(totalNFT, uriArray, royalties)
+    .batchMint(totalNFT, uriArray, royalitiesList)
     .send({ from: minterAddress });
 
   console.log(result);
