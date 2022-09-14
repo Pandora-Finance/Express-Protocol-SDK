@@ -92,12 +92,12 @@ const burn = async (web3, collectionAddress, minterAddress, tokenId) => {
   return result;
 };
 
-const fetchTokenURI = async (web3, collectionAddress, minterAddress, tokenId) => {
+const fetchTokenURI = async (web3, collectionAddress, tokenId) => {
   const tokenERC721Instance = await createInstance(web3, collectionAddress);
 
   let result = await tokenERC721Instance.methods
     .tokenURI(tokenId)
-    .call({ from: minterAddress });
+    .call();
 
   console.log(result);
   return result;

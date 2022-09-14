@@ -102,7 +102,7 @@ getTokenURI = async () => {
   const accounts = await web3.eth.getAccounts();
   const chainId = await web3.eth.net.getId();
   console.log(chainId);
-  await ExpressSDK.nft.fetchTokenURI(web3, chainId, accounts[0], tokenURItokenId.value);
+  await ExpressSDK.nft.fetchTokenURI(web3, chainId, tokenURItokenId.value);
 };
 
 sellNft = async () => {
@@ -296,7 +296,6 @@ tokenURIInCollection = async () => {
   await ExpressSDK.collection.fetchTokenURI(
     web3,
     tokenURICollectionAddress.value,
-    accounts[0],
     itemColFetchURITokenId.value
   );
 };
