@@ -29,6 +29,7 @@ export function createPandoraExpressSDK() {
         mint: Mint721.mint,
         batchMint: Mint721.batchMint,
         burn: Mint721.burn,
+        fetchTokenURI: Mint721.fetchTokenURI,
       },
       collection: {
         createCollection: Collection721.deployCollection,
@@ -43,7 +44,8 @@ export function createPandoraExpressSDK() {
         acceptBid: Collection721.acceptBid,
         bid: Collection721.bid,
         withdrawBid: Collection721.withdrawBid,
-        transferNFT: Collection721.transferNFT
+        transferNFT: Collection721.transferNFT,
+        fetchTokenURI: Collection721.fetchTokenURI
       },
     },
     erc1155: {

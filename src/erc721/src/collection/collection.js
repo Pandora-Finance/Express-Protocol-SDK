@@ -92,6 +92,17 @@ const burn = async (web3, collectionAddress, minterAddress, tokenId) => {
   return result;
 };
 
+const fetchTokenURI = async (web3, collectionAddress, tokenId) => {
+  const tokenERC721Instance = await createInstance(web3, collectionAddress);
+
+  let result = await tokenERC721Instance.methods
+    .tokenURI(tokenId)
+    .call();
+
+  console.log(result);
+  return result;
+};
+
 const sellNFT = async (
   web3,
   chainId,
@@ -253,5 +264,6 @@ module.exports = {
   bid,
   acceptBid,
   withdrawBid,
-  transferNFT
+  transferNFT,
+  fetchTokenURI
 };

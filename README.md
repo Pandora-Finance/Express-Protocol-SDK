@@ -130,6 +130,16 @@ ExpressSDK.erc721.order.acceptBid(web3, chainId, saleId, bidId, sellerAddress);
 ExpressSDK.erc721.order.withdrawBid(web3, chainId, saleId, bidId, buyerAddress);
 ```
 
+**TokenURI:** Fetch token URI of the NFT using  _fetchTokenURI_ function.
+
+```jsx
+ExpressSDK.erc721.nft.fetchTokenURI(
+  web3,
+  chainId,
+  tokenId,
+);
+```
+
 ## Collection Functions.
 
 **Collection:** New collection can be deployed using _createCollection_ function.
@@ -237,6 +247,16 @@ ExpressSDK.erc721.collection.withdrawBid(
 
 ```jsx
 ExpressSDK.erc721.collection.cancelSale(web3, chainId, sellerAddress, saleId);
+```
+
+**Token URI of NFT in Collection:** Fetch TokenURI of the NFT in a collection using _fetchTokenURI_ function.
+
+```jsx
+ExpressSDK.erc721.collection.fetchTokenURI(
+  web3,
+  collectionAddress
+  tokenId
+);
 ```
 
 ## Pinata Upload Functions.

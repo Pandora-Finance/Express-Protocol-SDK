@@ -47,4 +47,15 @@ const burn = async (web3, chainId, minterAddress, tokenId) => {
   return result;
 };
 
-module.exports = { mint, batchMint, burn };
+const fetchTokenURI = async (web3, chainId, tokenId) => {
+  const PNDC_instance = await UTILS.PNDC_instance(web3, chainId, PNDC_ABI);
+
+  let result = await PNDC_instance.methods
+    .tokenURI(tokenId)
+    .call()
+
+  console.log(result);
+  return result;
+};
+
+module.exports = { mint, batchMint, burn, fetchTokenURI };

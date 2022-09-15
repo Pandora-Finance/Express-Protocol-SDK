@@ -1,4 +1,4 @@
-const { mint, batchMint, burn } = require("../src/nft/mint");
+const { mint, batchMint, burn, fetchTokenURI } = require("../src/nft/mint");
 const Buy = require("../src/order/buy");
 const Sell = require("../src/order/sell");
 const Transfer = require("../src/order/transfer");
@@ -26,6 +26,7 @@ const createPandoraExpressSDK = () => {
       mint: mint,
       batchMint: batchMint,
       burn: burn,
+      fetchTokenURI: fetchTokenURI,
     },
     collection: {
       createCollection: Collection.deployCollection,
@@ -40,7 +41,8 @@ const createPandoraExpressSDK = () => {
       acceptBid: Collection.acceptBid,
       bid: Collection.bid,
       withdrawBid: Collection.withdrawBid,
-      transferNFT: Collection.transferNFT
+      transferNFT: Collection.transferNFT,
+      fetchTokenURI: Collection.fetchTokenURI,
     },
     pinata: {
       upload: Pinata.pinFileToIPFS,
@@ -93,6 +95,14 @@ burnNft = async () => {
   const chainId = await web3.eth.net.getId();
   console.log(chainId);
   await ExpressSDK.nft.burn(web3, chainId, accounts[0], itemburnTokenId.value);
+};
+
+getTokenURI = async () => {
+  let ExpressSDK = createPandoraExpressSDK();
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  await ExpressSDK.nft.fetchTokenURI(web3, chainId, tokenURItokenId.value);
 };
 
 sellNft = async () => {
@@ -278,6 +288,18 @@ burnInCollection = async () => {
   );
 };
 
+tokenURIInCollection = async () => {
+  let ExpressSDK = createPandoraExpressSDK();
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  await ExpressSDK.collection.fetchTokenURI(
+    web3,
+    tokenURICollectionAddress.value,
+    itemColFetchURITokenId.value
+  );
+};
+
 sellInCollection = async () => {
   let ExpressSDK = createPandoraExpressSDK();
   const accounts = await web3.eth.getAccounts();
@@ -428,6 +450,11 @@ const itemburnTokenId = document.getElementById("numBurnTokenId");
 const burnItemButton = document.getElementById("btnBurnItem");
 burnItemButton.onclick = burnNft;
 
+const tokenURItokenId = document.getElementById("tokenURITokenId");
+
+const tokenURIButton = document.getElementById("btnTokenURI");
+tokenURIButton.onclick = getTokenURI;
+
 const sellItemTokenId = document.getElementById("numSellItemTokenId");
 const sellItemPrice = document.getElementById("numSellItemPrice");
 
@@ -514,6 +541,12 @@ const itemColBurnTokenId = document.getElementById("numColBurnTokenId");
 
 const burnColItemButton = document.getElementById("btnColBurnItem");
 burnColItemButton.onclick = burnInCollection;
+
+const tokenURICollectionAddress = document.getElementById("tokenURICollectionAddress");
+const itemColFetchURITokenId = document.getElementById("numColTokenURITokenId");
+
+const tokenURIColItemButton = document.getElementById("btnColTokenURIItem");
+tokenURIColItemButton.onclick = tokenURIInCollection;
 
 const sellCollectionAddress = document.getElementById("sellCollectionAddress");
 const sellTokenId = document.getElementById("sellTokenId");

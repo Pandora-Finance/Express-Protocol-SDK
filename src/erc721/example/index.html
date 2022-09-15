@@ -57,6 +57,20 @@
       <button id="btnBurnItem">Burn Item</button>
     </div>
 
+    <div id="tokenURIItem">
+      <h4>Fetch TokenURI</h4>
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="tokenURITokenId"
+        required
+        placeholder="Enter TokenId"
+      />
+
+      <button id="btnTokenURI">Fetch TokenURI</button>
+    </div>
+
     <div id="sellItem">
       <h4>Sell Item</h4>
       <input
@@ -326,6 +340,26 @@
       />
 
       <button id="btnColBurnItem">Burn Item</button>
+    </div>
+
+    <div id="burnItemInCollection">
+      <h4>Fetch TokenURI In Collection</h4>
+      <input
+        type="text"
+        id="tokenURICollectionAddress"
+        required
+        placeholder="Enter collection Address"
+      />
+      <input
+        type="number"
+        min="1"
+        step="1"
+        id="numColTokenURITokenId"
+        required
+        placeholder="Enter TokenId"
+      />
+
+      <button id="btnColTokenURIItem">Fetch TokenURI</button>
     </div>
 
     <div id="sellInCollection">
