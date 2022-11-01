@@ -55,7 +55,10 @@ const UTILS = {
     //     gasPrice: '98599683627',
     //   });
     // } else {
-    return new web3.eth.Contract(abi, collectionAddress);
+    return new web3.eth.Contract(abi, collectionAddress, {
+      gas: 370041,
+      gasPrice: '98599683627',
+    });
     // }
   },
   PNDC_ADDRESS: (id) => {
