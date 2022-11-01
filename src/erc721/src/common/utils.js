@@ -29,14 +29,34 @@ const UTILS = {
     return await web3.eth.getAccounts();
   },
   PNDC_instance: async (web3, chainId, abi) => {
-    console.log(chainId);
-    return new web3.eth.Contract(abi, UTILS.PNDC_ADDRESS(chainId));
+    if (chainId === 137) {
+      return new web3.eth.Contract(abi, UTILS.PNDC_ADDRESS(chainId), {
+        gas: 370041,
+        gasPrice: '98599683627',
+      });
+    } else {
+      return new web3.eth.Contract(abi, UTILS.PNDC_ADDRESS(chainId));
+    }
   },
   TOKENFACTORY_instance: async (web3, chainId, abi) => {
-    return new web3.eth.Contract(abi, UTILS.TOKENFACTORY_ADDRESS(chainId));
+    if (chainId === 137) {
+      return new web3.eth.Contract(abi, UTILS.TOKENFACTORY_ADDRESS(chainId), {
+        gas: 370041,
+        gasPrice: '98599683627',
+      });
+    } else {
+      return new web3.eth.Contract(abi, UTILS.TOKENFACTORY_ADDRESS(chainId));
+    }
   },
   TOKENERC721_instance: async (web3, abi, collectionAddress) => {
-    return new web3.eth.Contract(abi, collectionAddress);
+    if (chainId === 137) {
+      return new web3.eth.Contract(abi, collectionAddress, {
+        gas: 370041,
+        gasPrice: '98599683627',
+      });
+    } else {
+      return new web3.eth.Contract(abi, collectionAddress);
+    }
   },
   PNDC_ADDRESS: (id) => {
     return UTILS.addressDict[id].PNDC_ADDRESS;
