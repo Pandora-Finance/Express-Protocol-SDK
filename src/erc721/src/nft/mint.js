@@ -55,4 +55,13 @@ const fetchTokenURI = async (web3, chainId, tokenId) => {
   return result;
 };
 
-module.exports = { mint, batchMint, burn, fetchTokenURI };
+const approve = async(web3, chainId, minterAddress, address, tokenId) => {
+  const PNDC_instance = await UTILS.PNDC_instance(web3, chainId, PNDC_ABI);
+
+  let result = await PNDC_instance.methods.approve(address, tokenId).send({from: minterAddress});
+
+  console.log(result);
+  return result;
+}
+
+module.exports = { mint, batchMint, burn, fetchTokenURI, approve };

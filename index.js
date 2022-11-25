@@ -30,6 +30,7 @@ export function createPandoraExpressSDK() {
         batchMint: Mint721.batchMint,
         burn: Mint721.burn,
         fetchTokenURI: Mint721.fetchTokenURI,
+        approve: Mint721.approve,
       },
       collection: {
         createCollection: Collection721.deployCollection,
