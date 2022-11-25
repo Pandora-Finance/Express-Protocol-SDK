@@ -1,4 +1,4 @@
-const { mint, batchMint, burn, fetchTokenURI } = require("../src/nft/mint");
+const { mint, batchMint, burn, fetchTokenURI, approve } = require("../src/nft/mint");
 const Buy = require("../src/order/buy");
 const Sell = require("../src/order/sell");
 const Transfer = require("../src/order/transfer");
@@ -27,6 +27,7 @@ const createPandoraExpressSDK = () => {
       batchMint: batchMint,
       burn: burn,
       fetchTokenURI: fetchTokenURI,
+      approve: approve,
     },
     collection: {
       createCollection: Collection.deployCollection,
@@ -87,6 +88,14 @@ batchMintNft = async () => {
     [itemURI1.value, itemURI2.value, itemURI3.value],
     [[[accounts[0], 10]], [[accounts[0], 10]], [[accounts[0], 20]]]
   );
+};
+
+approveNft = async () => {
+  let ExpressSDK = createPandoraExpressSDK();
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  await ExpressSDK.nft.approve(web3, chainId, accounts[0], approveAddress.value, approveTokenId.value );
 };
 
 burnNft = async () => {
@@ -444,6 +453,12 @@ const itemURI2 = document.getElementById("txtCreateItemURI3");
 
 const createItemsButton = document.getElementById("btnCreateItemInBatch");
 createItemsButton.onclick = batchMintNft;
+
+const approveAddress = document.getElementById("txtApproveAddress");
+const approveTokenId = document.getElementById("numApproveTokenId");
+
+const approveItemButton = document.getElementById("btnApproveItem");
+approveItemButton.onclick = approveNft;
 
 const itemburnTokenId = document.getElementById("numBurnTokenId");
 
