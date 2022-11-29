@@ -46,7 +46,8 @@ export function createPandoraExpressSDK() {
         bid: Collection721.bid,
         withdrawBid: Collection721.withdrawBid,
         transferNFT: Collection721.transferNFT,
-        fetchTokenURI: Collection721.fetchTokenURI
+        fetchTokenURI: Collection721.fetchTokenURI,
+        approve: Collection721.approve
       },
     },
     erc1155: {

@@ -44,6 +44,7 @@ const createPandoraExpressSDK = () => {
       withdrawBid: Collection.withdrawBid,
       transferNFT: Collection.transferNFT,
       fetchTokenURI: Collection.fetchTokenURI,
+      approve: Collection.approve
     },
     pinata: {
       upload: Pinata.pinFileToIPFS,
@@ -281,6 +282,20 @@ batchMintInCollection = async () => {
     3,
     [itemColURI1, itemColURI2, itemColURI3],
     [[accounts[0], 10]]
+  );
+};
+
+approveInCollection = async () => {
+  let ExpressSDK = createPandoraExpressSDK();
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  await ExpressSDK.collection.approve(
+    web3,
+    approvalCollectionAddress.value,
+    accounts[0],
+    approvalNftAddress.value,
+    approvalTokenId.value
   );
 };
 
@@ -550,6 +565,13 @@ const createItemsColButton = document.getElementById(
   "btnBatchMintInCollection"
 );
 createItemsColButton.onclick = batchMintInCollection;
+
+const approvalCollectionAddress = document.getElementById('approvalCollectionAddress');
+const approvalNftAddress = document.getElementById('approvalNftAddress');
+const approvalTokenId = document.getElementById('approvalTokenId');
+
+const approvalItemButton = document.getElementById('btnColApproval');
+approvalItemButton.onclick = approveInCollection;
 
 const burnCollectionAddress = document.getElementById("burnCollectionAddress");
 const itemColBurnTokenId = document.getElementById("numColBurnTokenId");

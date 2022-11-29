@@ -251,6 +251,16 @@ const withdrawBid = async (web3, chainId, tokenId, bidId, bidderAddress) => {
   return result;
 };
 
+const approve = async(web3, collectionAddress, minterAddress, address, tokenId) => {
+  const tokenERC721Instance = await createInstance(web3, collectionAddress);
+
+  let result = await await tokenERC721Instance.methods.approve(address, tokenId).send({from: minterAddress});
+
+  console.log(result);
+  return result;
+}
+
+
 module.exports = {
   deployCollection,
   createInstance,
@@ -265,5 +275,6 @@ module.exports = {
   acceptBid,
   withdrawBid,
   transferNFT,
-  fetchTokenURI
+  fetchTokenURI,
+  approve
 };
